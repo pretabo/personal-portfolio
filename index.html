@@ -53,6 +53,14 @@
             </div>
           </div>
         </div>
+        <div class="hero-feedback">
+          <div class="shell">
+            <h2 class="colleagues-heading">What do my colleagues say about me?</h2>
+          </div>
+          <div class="feedback-ticker-wrap" aria-hidden="true">
+            <div class="feedback-ticker" id="feedback-ticker"></div>
+          </div>
+        </div>
       </section>
 
       <section class="section section-summary" id="summary">
@@ -118,7 +126,6 @@
 
       <section class="section section-colleagues" id="colleagues">
         <div class="shell">
-          <h2 class="colleagues-heading">What do my colleagues say about me?</h2>
           <div class="ticker-wrap" aria-hidden="true">
             <div class="ticker">
               <span class="ticker-snippet">Thorough, deeply knowledgeable & a great team player.</span>
@@ -167,5 +174,25 @@
         <p>© Ben Fellows</p>
       </div>
     </footer>
+    <script>
+      (function () {
+        var wrap = document.getElementById('feedback-ticker');
+        if (!wrap) return;
+        fetch('feedback.json')
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            var items = Array.isArray(data) ? data : (data && Array.isArray(data.feedback) ? data.feedback : []);
+            if (items.length === 0) return;
+            var mark = '<span class="feedback-ticker-mark" aria-hidden="true">\u201C</span>';
+            var html = mark;
+            items.forEach(function (text, i) {
+              html += '<span class="feedback-ticker-snippet">' + String(text).replace(/</g, '&lt;').replace(/"/g, '&quot;') + '</span>';
+              if (i < items.length - 1) html += mark;
+            });
+            wrap.innerHTML = html + html;
+          })
+          .catch(function () {});
+      })();
+    </script>
   </body>
 </html>

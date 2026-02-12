@@ -249,6 +249,69 @@ main {
   flex-shrink: 0;
 }
 
+/* Feedback ticker — heading just over ticker, below hero */
+.hero-feedback {
+  margin-top: 3rem;
+}
+
+.hero-feedback .colleagues-heading {
+  margin: 0 0 3rem;
+}
+
+.feedback-ticker-wrap {
+  overflow: hidden;
+  margin-top: 0;
+  padding: 0.5rem 0;
+}
+
+.feedback-ticker {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: feedback-ticker 60s linear infinite;
+}
+
+.feedback-ticker-mark {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-blue);
+  font-family: Georgia, "Times New Roman", serif;
+  opacity: 0.95;
+}
+
+.feedback-ticker-snippet {
+  flex-shrink: 0;
+  width: 220px;
+  min-height: 4.5em;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--color-mocha);
+  white-space: normal;
+  opacity: 0.9;
+  box-sizing: border-box;
+}
+
+@keyframes feedback-ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .feedback-ticker-snippet {
+    width: 180px;
+    min-height: 4.25em;
+    font-size: 0.9rem;
+  }
+
+  .feedback-ticker {
+    gap: 1.5rem;
+  }
+}
+
 .hero-image-wrap {
   display: flex;
   justify-content: flex-end;
