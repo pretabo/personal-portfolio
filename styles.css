@@ -91,6 +91,9 @@ a:hover {
 /* Header */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background-color: var(--color-parchment);
   border-bottom: 2px solid var(--color-mauve);
 }
@@ -156,16 +159,16 @@ main {
   padding: 100px 0 0;
 }
 
-/* Hero — Figma: two-column, text left, rounded image right */
+/* Hero — Figma: pill card, tight rhythm, constrained measure */
 
 .hero {
-  padding: 48px 0 64px;
+  padding: 56px 0 72px;
 }
 
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 56px;
   align-items: center;
   max-width: 1040px;
   margin: 0 auto;
@@ -173,31 +176,77 @@ main {
 }
 
 .hero-copy {
-  max-width: 28rem;
+  max-width: 26rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-copy .hero-name,
+.hero-copy .hero-subtitle,
+.hero-copy .hero-body {
+  align-self: flex-start;
 }
 
 .hero-name {
-  color: #b2585b;
-  margin: 0 0 0.2em;
-  font-size: 3.25rem;
+  color: #a7545e;
+  margin: 0 0 0.25em;
+  font-size: 4.25rem;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
 .hero-subtitle {
-  margin: 0 0 1rem;
-  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #4a6c81;
 }
 
 .hero-body {
   margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.45rem;
+  line-height: 1.55;
   color: var(--color-mocha);
+  max-width: 32ch;
+}
+
+.hero-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--color-mauve);
+  border-radius: 999px;
+  padding: 0.6rem 0.85rem;
+  box-shadow: 0 4px 16px rgba(167, 84, 94, 0.3);
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  color: #fff;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hero-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.hero-link-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  flex-shrink: 0;
 }
 
 .hero-image-wrap {
@@ -205,12 +254,20 @@ main {
   justify-content: flex-end;
 }
 
+.hero-pill {
+  width: 100%;
+  max-width: 428px;
+  aspect-ratio: 428 / 704;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(60, 47, 41, 0.12), 0 4px 16px rgba(60, 47, 41, 0.08);
+}
+
 .hero-photo {
   width: 100%;
-  max-width: 420px;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  object-position: center 22%;
   display: block;
 }
 
@@ -224,12 +281,12 @@ main {
 
 @media (max-width: 720px) {
   .hero {
-    padding: 32px 0 48px;
+    padding: 40px 0 56px;
   }
 
   .hero-inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
     padding: 0 16px;
   }
 
@@ -238,12 +295,24 @@ main {
     justify-content: center;
   }
 
-  .hero-photo {
-    max-width: 320px;
+  .hero-pill {
+    max-width: min(320px, 100%);
+  }
+
+  .hero-body {
+    max-width: none;
   }
 
   .hero-name {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-body {
+    font-size: 1.2rem;
   }
 }
 
@@ -365,6 +434,91 @@ main {
   font-size: 2.2rem;
   line-height: 1;
   color: var(--color-mauve);
+}
+
+/* Colleagues — ticker + stacked quotes */
+
+.section-colleagues {
+  padding-top: 100px;
+}
+
+.colleagues-heading {
+  color: var(--color-mauve);
+  margin: 0 0 1rem;
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+}
+
+.ticker {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: ticker 45s linear infinite;
+}
+
+.ticker-snippet {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-mocha);
+  white-space: nowrap;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.section-colleagues .quote-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 36rem;
+}
+
+.section-colleagues .quote-card {
+  position: relative;
+  padding: 1rem 0 1rem 1.75rem;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  font-style: italic;
+  border-left: 3px solid var(--color-mauve);
+}
+
+.section-colleagues .quote-mark {
+  position: absolute;
+  left: 0.25rem;
+  top: 0.1rem;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-mauve);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.section-colleagues .quote-card p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--color-mocha);
+}
+
+@media (max-width: 720px) {
+  .ticker-wrap {
+    margin-bottom: 1.5rem;
+  }
+
+  .ticker-snippet {
+    font-size: 0.9rem;
+  }
 }
 
 /* Summary */
