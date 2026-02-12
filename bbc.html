@@ -9,20 +9,39 @@
   <body>
     <header class="site-header">
       <div class="shell site-header-inner">
-        <div class="site-brand">
-          <span class="site-name">Ben Fellows</span>
-          <span class="site-role">Product Manager</span>
+        <div class="site-header-row">
+          <div class="site-brand">
+            <span class="site-name">Ben Fellows</span>
+            <span class="site-role">Product Manager</span>
+          </div>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-trigger nav-work-trigger--active" aria-expanded="true" aria-controls="work-subnav" id="work-trigger">Work</button>
+            <a href="index.html#summary">About Me</a>
+          </nav>
         </div>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="index.html">Home</a>
+        <div class="nav-work-sub is-open" id="work-subnav" role="region" aria-label="Work links">
           <a href="economist.html">The Economist</a>
           <a href="bbc-monitoring.html">BBC Monitoring</a>
           <a href="bbc.html">BBC</a>
           <a href="other-work.html">Other Work</a>
-        </nav>
+        </div>
       </div>
     </header>
 
+    <script>
+      (function () {
+        var trigger = document.getElementById('work-trigger');
+        var sub = document.getElementById('work-subnav');
+        if (trigger && sub) {
+          trigger.addEventListener('click', function () {
+            var open = sub.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', open);
+            trigger.classList.toggle('nav-work-trigger--active', open);
+          });
+        }
+      })();
+    </script>
     <main>
       <section class="hero hero--page">
         <div class="shell hero-inner hero-inner--single">
