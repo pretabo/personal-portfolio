@@ -92,7 +92,7 @@ a:hover {
 
 .site-header {
   background-color: var(--color-parchment);
-  border-bottom: 1px solid rgba(58, 100, 124, 0.18);
+  border-bottom: 2px solid var(--color-mauve);
 }
 
 .site-header-inner {
@@ -156,52 +156,62 @@ main {
   padding: 100px 0 0;
 }
 
-/* Hero */
+/* Hero — Figma: two-column, text left, rounded image right */
 
 .hero {
-  background-color: var(--color-blue);
-  color: #ffffff;
-  padding: 120px 0;
+  padding: 48px 0 64px;
 }
 
 .hero-inner {
-  color: #ffffff;
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
   align-items: center;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.hero h1 {
-  color: #ffffff;
+.hero-copy {
+  max-width: 28rem;
+}
+
+.hero-name {
+  color: #b2585b;
+  margin: 0 0 0.2em;
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 .hero-subtitle {
   margin: 0 0 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #4a6c81;
 }
 
 .hero-body {
-  max-width: 36rem;
-  line-height: 1.7;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-mocha);
 }
 
-.hero-media {
+.hero-image-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
-.hero-headshot {
-  max-width: 260px;
+.hero-photo {
   width: 100%;
-  display: block;
-  border-radius: 12px;
-  border: 2px solid rgba(237, 234, 232, 0.9);
+  max-width: 420px;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  border-radius: 20px;
+  display: block;
 }
 
 .hero--page {
@@ -210,6 +220,31 @@ main {
 
 .hero-inner--single {
   grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 32px 0 48px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .hero-image-wrap {
+    order: -1;
+    justify-content: center;
+  }
+
+  .hero-photo {
+    max-width: 320px;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+  }
 }
 
 /* Economist covers */
@@ -455,19 +490,6 @@ main {
 @media (max-width: 720px) {
   h1 {
     font-size: 2.4rem;
-  }
-
-  .hero {
-    padding: 96px 0;
-  }
-
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .hero-media {
-    justify-content: flex-start;
   }
 
   .human-inner {
