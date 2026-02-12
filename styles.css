@@ -344,6 +344,12 @@ main {
   margin-top: 3rem;
 }
 
+@media (max-width: 720px) {
+  .hero-feedback {
+    margin-top: 5rem;
+  }
+}
+
 .hero-feedback .colleagues-heading {
   margin: 0 0 3rem;
 }
@@ -447,11 +453,11 @@ main {
 
   .hero-copy {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(320px, 100%);
-    height: 100%;
+    top: 5cm;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(100% - 2cm);
     z-index: 1;
     display: flex;
     flex-direction: column;
