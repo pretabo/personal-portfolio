@@ -1,0 +1,19 @@
+Diary — personal-portfolio
+
+2025-02-12
+- Session: Reverted previous changes (index, styles, bbc*, economist, other-work, restored deleted screenshots).
+- Nav restructured: top links Home, Work, About Me; Work toggles expandable row with The Economist, BBC Monitoring, BBC, Other Work (right-aligned); Work stays active on work sub-pages.
+- Header: full banner expands (no dropdown); work sub-links same style as main nav, right-aligned; added responsive padding (32px ≤1080px, 24px ≤720px) for shell and banner.
+- Removed separator line when Work subnav opens.
+- Small (720px): banner name/role bigger (site-name 1.2rem, site-role 0.95rem); work sub-links left-aligned; hero two-column (2fr 1fr), image 1/3 right, smaller hero text; then rethought to overlay.
+- Small hero: image dimmed (opacity 0.45), text overlaid on same-size pill (320px max), no full-bleed; text then set to full-width bleed past image; overlay pushed down 2cm (top: 2cm on hero-copy).
+- Hero-feedback margin-top 5rem at 720px to prevent overlap with colleagues heading.
+- Committed & pushed: "Nav: Home, Work (expandable), About Me; small breakpoint hero overlay, banner and work grid tweaks."
+- Committed & pushed: "Small breakpoint: hero text bleeds past image, 2cm lower overlay, extra spacing above colleagues heading."
+- User asked what makes hero image faded — answered: .hero-photo { opacity: 0.45 } in 720px media query.
+- diary.txt created; from now on one line added here after every message, commit, and update.
+- feedback.json replaced with 19 new colleague quotes (product ally, pragmatic solutions, value-driven, team culture, recommend, collaboration, thorough, high value initiatives, attention to detail, stakeholders, great working with Ben, Text-to-speech/podcasts, supporting software, leader, First Utility, methodical/patient/enthusiastic, impact at First Utility, pleasure to work with).
+- Replaced Summary + "More about how I work" with single Profile section: intro (H1 PROFILE + paragraph, two-column with Candidshot.jpeg right), The Pillars Of My Career (3 rows: econlogobig.png / Platform & Infrastructure, bbcmlogo.svg / Front-End & Experience, bbclogo.svg / High-Impact Delivery), How I Work (paragraph + 4 bullet points). Nav About Me link updated to #profile. Styles: profile intro/pillars/how-I-work, mobile stacking, editorial spacing.
+- Ticker content made fully dynamic: removed hardcoded colleagues ticker snippets from index.html; both hero feedback-ticker and colleagues ticker now populated from feedback.json in one fetch.
+- Removed colleagues section (ticker + quote-list) and contact section from index.html; only ticker is now the hero feedback ticker (from feedback.json). Script simplified to populate only #feedback-ticker.
+- Responsiveness fixes: overflow-x: hidden on html/body; min-width: 0 and minmax(0,…) on hero-inner, profile .shell, profile-intro, profile-pillar, profile-pillar-text; overflow-wrap on pillar text.

@@ -17,11 +17,13 @@
 
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100%;
   margin: 0;
+  overflow-x: hidden;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: var(--color-parchment);
   color: var(--color-mocha);
@@ -257,12 +259,13 @@ main {
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 56px;
   align-items: center;
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 24px;
+  min-width: 0;
 }
 
 .hero-copy {
@@ -462,7 +465,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.5rem 1.25rem;
+    padding: 2rem 1.25rem;
     box-sizing: border-box;
     max-width: none;
   }
@@ -479,7 +482,7 @@ main {
   }
 
   .hero-photo {
-    opacity: 0.45;
+    opacity: 0.55;
     object-fit: cover;
     object-position: center 22%;
   }
@@ -706,41 +709,148 @@ main {
   }
 }
 
-/* Summary */
+/* Profile */
 
-.section-summary p {
-  max-width: 40rem;
-}
-
-/* Human section */
-
-.section-human {
+.section-profile {
   padding-top: 100px;
 }
 
-.human-inner {
+.section-profile .shell {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  min-width: 0;
+}
+
+/* Profile intro (two-column) */
+
+.profile-intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
   align-items: center;
+  min-width: 0;
 }
 
-.human-copy p {
+.profile-intro-copy h1 {
+  margin-bottom: 0.5em;
+}
+
+.profile-intro-copy p {
   max-width: 40rem;
+  margin: 0;
 }
 
-.human-media {
+.profile-intro-media {
   display: flex;
   justify-content: flex-end;
 }
 
-.human-image {
+.profile-intro-image {
   max-width: 320px;
   width: 100%;
   display: block;
   border-radius: 12px;
-  border: 2px solid rgba(60, 47, 41, 0.25);
+  box-shadow: 0 8px 24px rgba(60, 47, 41, 0.1);
   object-fit: cover;
+}
+
+/* Pillars of my career */
+
+.profile-pillars-heading {
+  margin: 0 0 1.5rem;
+}
+
+.profile-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.profile-pillar {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  min-width: 0;
+}
+
+.profile-pillar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.profile-pillar-logo {
+  display: block;
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.profile-pillar-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.profile-pillar-text {
+  margin: 0;
+  max-width: 42rem;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* How I Work */
+
+.profile-how-heading {
+  margin: 0 0 1rem;
+}
+
+.profile-how-intro {
+  max-width: 40rem;
+  margin: 0 0 1.5rem;
+}
+
+.profile-how-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  max-width: 40rem;
+}
+
+.profile-how-list li {
+  margin-bottom: 0.75em;
+}
+
+.profile-how-list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .profile-intro {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .profile-intro-media {
+    order: 1;
+    justify-content: center;
+  }
+
+  .profile-intro-image {
+    max-width: 280px;
+  }
+
+  .profile-pillar {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .profile-pillar-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
 }
 
 /* Work */
@@ -829,10 +939,5 @@ main {
 @media (max-width: 720px) {
   h1 {
     font-size: 2.4rem;
-  }
-
-  .human-inner {
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 }
