@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ben Fellows — Product Manager</title>
+    <title>Ben Fellows - Product Manager</title>
     <meta name="description" content="Ben Fellows — Product Manager. Platform, delivery, and strategy." />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -88,39 +88,39 @@
           <h2 class="profile-pillars-heading">The Pillars Of My Career</h2>
           <div class="profile-pillars">
             <div class="profile-pillar">
-              <div class="profile-pillar-header">
+              <a href="economist.html" class="profile-pillar-header profile-pillar-header-link">
                 <h3 class="profile-pillar-title">Platform &amp; Infrastructure</h3>
                 <div class="profile-pillar-logo-wrap">
                   <img src="assets/econlogobig.png" alt="" class="profile-pillar-logo" />
                 </div>
-              </div>
+              </a>
               <p class="profile-pillar-text">At The Economist, my work centres on the systems publishing runs on. I shape content models, guide the move toward a more unified platform, and make practical architectural decisions so workflows become simpler, more reliable and easier to evolve without disrupting daily publishing.</p>
             </div>
             <div class="profile-pillar">
-              <div class="profile-pillar-header">
+              <a href="bbc-monitoring.html" class="profile-pillar-header profile-pillar-header-link">
                 <h3 class="profile-pillar-title">Front-End &amp; Experience</h3>
                 <div class="profile-pillar-logo-wrap">
                   <img src="assets/bbcmlogored.png" alt="" class="profile-pillar-logo" />
                 </div>
-              </div>
+              </a>
               <p class="profile-pillar-text">At BBC Monitoring, I led the redesign of the subscriber portal and introduced a new CMS to replace fragmented tooling. The work focused on improving usability and discoverability while ensuring structured content behaved consistently across surfaces.</p>
             </div>
             <div class="profile-pillar">
-              <div class="profile-pillar-header">
+              <a href="bbc.html" class="profile-pillar-header profile-pillar-header-link">
                 <h3 class="profile-pillar-title">High-Impact Delivery</h3>
                 <div class="profile-pillar-logo-wrap">
                   <img src="assets/bbclogo.svg" alt="" class="profile-pillar-logo" />
                 </div>
-              </div>
+              </a>
               <p class="profile-pillar-text">At the BBC, I worked on products used by millions worldwide, including World Service front pages, personalisation features and support for 2020 US election coverage. Delivering in these contexts required clear scope, careful coordination and a strong focus on reliability under pressure.</p>
             </div>
             <div class="profile-pillar">
-              <div class="profile-pillar-header">
+              <a href="other-work.html" class="profile-pillar-header profile-pillar-header-link">
                 <h3 class="profile-pillar-title">Software Development</h3>
                 <div class="profile-pillar-logo-wrap">
                   <img src="assets/uob.png" alt="University of Birmingham" class="profile-pillar-logo" />
                 </div>
-              </div>
+              </a>
               <p class="profile-pillar-text">I trained in Computer Science at the University of Birmingham and began my career building production systems at Athium and Brainlabs, from football administration software used by professional clubs to internal tools integrating with major advertising platforms. That foundation still shapes how I work, helping me understand technical trade-offs and engage deeply with engineers.</p>
             </div>
           </div>
@@ -285,6 +285,7 @@
         var activePill = null;
         function closeAccordion() {
           if (!activePill) return;
+          activePill.classList.remove('pill--active');
           activePill.setAttribute('aria-expanded', 'false');
           activePill = null;
           accordion.classList.remove('is-open');
@@ -315,11 +316,13 @@
           accordion.setAttribute('aria-hidden', 'false');
           grid.classList.add('has-active');
           activePill = pill;
+          pill.classList.add('pill--active');
           pill.setAttribute('aria-expanded', 'true');
           accordion.classList.add('is-open');
         }
         pills.forEach(function (pill) {
-          pill.addEventListener('click', function () {
+          pill.addEventListener('click', function (e) {
+            e.stopPropagation();
             openAccordion(pill);
           });
           pill.addEventListener('keydown', function (e) {
@@ -328,6 +331,11 @@
               openAccordion(pill);
             }
           });
+        });
+        document.addEventListener('click', function (e) {
+          if (!activePill) return;
+          if (grid.contains(e.target) || accordion.contains(e.target)) return;
+          closeAccordion();
         });
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') closeAccordion();

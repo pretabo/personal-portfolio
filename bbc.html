@@ -6,7 +6,7 @@
     <title>BBC — Ben Fellows</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page page--bbc">
     <header class="site-header">
       <div class="shell site-header-inner">
         <div class="site-header-row">
@@ -44,26 +44,92 @@
     </script>
     <main>
       <section class="hero hero--page">
-        <div class="shell hero-inner hero-inner--single">
-          <div class="hero-copy">
-            <h1>BBC</h1>
+        <div class="shell">
+          <div class="work-hero-inner">
+            <div class="work-hero__copy">
+              <h1>BBC</h1>
+              <p class="work-hero__role">Graduate Business Analyst</p>
+              <p class="work-hero__body">I worked on products used by millions, where reliability and clarity matter. I shipped during live news moments and long-running platform work, from elections to personalisation.</p>
+            </div>
+            <div class="work-hero__media">
+              <img src="assets/default.png" alt="" class="work-hero__image" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--scale-under-hero">
+        <div class="shell">
+          <div class="work-scale">
+            <div class="work-scale__block">
+              <h3>Global reach</h3>
+              <p>Products designed for worldwide audiences.</p>
+            </div>
+            <div class="work-scale__block">
+              <h3>High-pressure delivery</h3>
+              <p>Shipping during live news moments.</p>
+            </div>
+            <div class="work-scale__block">
+              <h3>Platform surfaces</h3>
+              <p>Homepage, results pages, recommendations, front pages.</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="shell">
-          <p>This page is in progress.</p>
-          <ul>
-            <li>Overview of BBC roles and responsibilities</li>
-            <li>Notable projects and deliveries</li>
-            <li>How the work shaped later product roles</li>
-            <li>Collaboration with multidisciplinary teams</li>
-            <li>Key learnings carried forward</li>
+          <div class="surfaces-band">
+            <span class="surfaces-band__tag">Homepage</span>
+            <span class="surfaces-band__sep">•</span>
+            <span class="surfaces-band__tag">Results</span>
+            <span class="surfaces-band__sep">•</span>
+            <span class="surfaces-band__tag">World Service</span>
+            <span class="surfaces-band__sep">•</span>
+            <span class="surfaces-band__tag">Recommendations</span>
+            <span class="surfaces-band__sep">•</span>
+            <span class="surfaces-band__tag">Video</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <h2 class="work-section-heading">Deliveries</h2>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <span class="timeline-item__role">Business Analyst</span>
+              <h3 class="timeline-item__title">US Election 2020</h3>
+              <p class="timeline-item__desc">Election banner, results homepage, and supporting pages with editorial controls for multiple languages and live data flows.</p>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-item__role">Business Analyst</span>
+              <h3 class="timeline-item__title">World Service platform rebuild</h3>
+              <p class="timeline-item__desc">Redeveloped dozens of World Service news front pages in React as part of a shared platform approach.</p>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-item__role">Business Analyst</span>
+              <h3 class="timeline-item__title">Universal Recommendations Engine</h3>
+              <p class="timeline-item__desc">Contributed to the recommendations platform used across BBC products, with additional care where News required stricter controls.</p>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-item__role">Business Analyst</span>
+              <h3 class="timeline-item__title">Short-form video recommendations</h3>
+              <p class="timeline-item__desc">Integrated recommendations into short-form video and ran A/B tests on placement to improve engagement.</p>
+            </li>
           </ul>
-          <p>
-            <a href="index.html">Back to Home</a>
-          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <h2 class="work-section-heading">What I'm good at here</h2>
+          <ul class="work-bullets">
+            <li>Clear scope and fast alignment</li>
+            <li>Calm delivery under pressure</li>
+            <li>Translating technical detail for non-technical stakeholders</li>
+            <li>Iterating with evidence</li>
+          </ul>
         </div>
       </section>
     </main>
