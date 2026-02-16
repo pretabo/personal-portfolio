@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BBC — Ben Fellows</title>
+    <title>About Me — Ben Fellows</title>
+    <meta name="description" content="About Ben Fellows — Product Manager. Platform, delivery, and strategy." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -16,14 +17,14 @@
           </div>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="index.html">Home</a>
-            <button type="button" class="nav-work-trigger nav-work-trigger--active" aria-expanded="true" aria-controls="work-subnav" id="work-trigger">Work</button>
-            <a href="about.html">About Me</a>
+            <button type="button" class="nav-work-trigger" aria-expanded="false" aria-controls="work-subnav" id="work-trigger">Work</button>
+            <a href="about.html" class="nav-current">About Me</a>
           </nav>
         </div>
-        <div class="nav-work-sub is-open" id="work-subnav" role="region" aria-label="Work links">
+        <div class="nav-work-sub" id="work-subnav" role="region" aria-label="Work links">
           <a href="economist.html">The Economist</a>
           <a href="bbc-monitoring.html">BBC Monitoring</a>
-          <a href="bbc.html" class="nav-current">BBC</a>
+          <a href="bbc.html">BBC</a>
           <a href="other-work.html">Other Work</a>
         </div>
       </div>
@@ -43,31 +44,13 @@
       })();
     </script>
     <main>
-      <section class="hero hero--page">
-        <div class="shell hero-inner hero-inner--single">
-          <div class="hero-copy">
-            <h1>BBC</h1>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
+      <section class="section section-profile">
         <div class="shell">
-          <p>This page is in progress.</p>
-          <ul>
-            <li>Overview of BBC roles and responsibilities</li>
-            <li>Notable projects and deliveries</li>
-            <li>How the work shaped later product roles</li>
-            <li>Collaboration with multidisciplinary teams</li>
-            <li>Key learnings carried forward</li>
-          </ul>
-          <p>
-            <a href="index.html">Back to Home</a>
-          </p>
+          <h1>About Me</h1>
+          <p>More content coming soon.</p>
         </div>
       </section>
     </main>
-
     <footer class="site-footer">
       <div class="shell footer-inner">
         <p>© Ben Fellows</p>
@@ -75,4 +58,3 @@
     </footer>
   </body>
 </html>
-
