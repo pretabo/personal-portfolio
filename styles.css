@@ -1,10 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap");
 
 :root {
   /* Brand colours */
   --color-brand-pink: #D17192;
   --color-brand-green: #2B8667;
+
+  /* Brand typography */
+  --font-sans: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  --font-heading: "Merriweather", Georgia, "Times New Roman", serif;
 
   /* Foundation */
   --color-bg-main: #FAF8F2;
@@ -34,22 +37,21 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--color-bg-main);
   color: var(--color-text-primary);
   font-size: 1.05rem;
   line-height: 1.65;
 }
 
-.page--economist {
-  font-family: "Gill Sans";
-}
-
-.page--economist h1,
-.page--economist h2,
-.page--economist h3 {
-  font-family: "Merriweather";
+h1,
+h2,
+h3 {
+  margin: 0 0 0.75em;
+  font-family: var(--font-heading);
   letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  line-height: 1.18;
 }
 
 .page--economist h1 {
@@ -59,22 +61,6 @@ body {
 .page--economist h2,
 .page--economist h3 {
   font-weight: 700;
-}
-
-.page--economist .econ-hero p,
-.page--economist .econ-hero li,
-.page--economist .economist-body p,
-.page--economist .accordion-header,
-.page--economist .accordion-panel {
-  font-family: "Gill Sans";
-}
-
-h1,
-h2,
-h3 {
-  margin: 0 0 0.75em;
-  color: var(--color-text-primary);
-  line-height: 1.18;
 }
 
 h1 {
@@ -464,7 +450,7 @@ main {
   font-size: 8rem;
   line-height: 1;
   color: var(--color-brand-pink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
   opacity: 0.95;
 }
 
@@ -743,6 +729,92 @@ main {
   }
 }
 
+/* Scale & Reach — full-width metrics strip (Economist page only) */
+.page--economist .econ-scale-strip {
+  width: 100%;
+  background: color-mix(in srgb, var(--color-brand-pink) 18%, var(--color-bg-main));
+  padding: 2.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.page--economist .econ-scale-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.page--economist .econ-scale-strip__scroll {
+  min-width: min-content;
+  padding: 0 24px;
+}
+
+.page--economist .econ-scale-strip__row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page--economist .econ-scale-strip__metric {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.page--economist .econ-scale-strip__metric:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.page--economist .econ-scale-strip__number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.page--economist .econ-scale-strip__label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-brand-green);
+  max-width: 8em;
+}
+
+@media (max-width: 900px) {
+  .page--economist .econ-scale-strip__row {
+    justify-content: flex-start;
+  }
+
+  .page--economist .econ-scale-strip__scroll {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 /* Economist covers */
 
 .section-econ-covers {
@@ -1005,7 +1077,7 @@ main {
   font-size: 2.5rem;
   line-height: 1;
   color: var(--color-brand-pink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-heading);
 }
 
 .section-colleagues .quote-card p {
@@ -1163,7 +1235,7 @@ main {
 
 .selected-work__scroll {
   width: 100%;
-  max-width: 1040px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 24px;
   overflow-x: auto;
@@ -1202,9 +1274,10 @@ main {
 
 .selected-work-card {
   flex: 0 0 auto;
-  width: calc((min(100vw - 48px, 992px) - 48px) / 3);
+  /* Size so ~2.5 cards fit in view, leaving a peek of the next to suggest scroll */
+  width: calc((min(100vw - 48px, 1072px) - 48px - 24px) / 2.5);
   min-width: 280px;
-  max-width: 340px;
+  max-width: 380px;
   background: var(--color-surface);
   border-radius: 16px;
   overflow: hidden;
@@ -1940,84 +2013,144 @@ main {
   text-align: left;
 }
 
-/* Timeline: 3-column grid [date | rail/dot | card], rail bold, dots on rail */
+/* ===== BBC SEGS Timeline (desktop) ===== */
 .page--bbc .segs__timeline {
+  --segs-date-col: 120px;
+  --segs-mid-col: 40px;
+  --segs-gap: 24px;
+  --segs-pad-x: 24px;
+  /** Node vertical offset: moves only the node (not the row). 0 = align with date line; try 8px, 12px, 16px to nudge down. */
+  --segs-node-offset: 55px;
+  /** Date vertical offset: moves only the date (e.g. 4px, 8px to nudge down). */
+  --segs-date-offset: 98px;
+
   position: relative;
   display: grid;
-  grid-template-columns: 120px 40px 1fr;
-  column-gap: 24px;
+  grid-template-columns: var(--segs-date-col) var(--segs-mid-col) 1fr;
+  column-gap: var(--segs-gap);
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0.5rem 24px 0.5rem;
+  padding: 0.5rem var(--segs-pad-x);
 }
 
-/* Rail: thick line in style-guide green, absolutely positioned so it always shows */
+/* Rail: thick line, centred in middle column so it runs through the nodes */
 .page--bbc .segs__rail {
   position: absolute;
-  /* Center of middle column: 24px padding + 120px col1 + 24px gap + 20px (half of 40px) - 4px (half of 8px) */
-  left: calc(24px + 120px + 24px + (40px - 8px) / 2);
   top: 0;
   bottom: 0;
+  left: calc(var(--segs-pad-x) + var(--segs-date-col) + var(--segs-gap) + (var(--segs-mid-col) - 8px) / 2);
   width: 8px;
   background: var(--color-brand-green);
   border-radius: 999px;
   pointer-events: none;
+  z-index: 1;
 }
 
 .page--bbc .segs__milestone {
   display: grid;
   grid-template-columns: subgrid;
+  grid-template-rows: auto auto;
   grid-column: 1 / -1;
   align-items: start;
   margin-bottom: 32px;
+  gap: 0.5rem 0;
 }
 
 .page--bbc .segs__milestone:last-child {
   margin-bottom: 0;
 }
 
-/* Circle: pink stroke, center aligned with first line (top) of card title */
-.page--bbc .segs__milestone::before {
-  content: "";
-  grid-column: 2;
-  align-self: start;
-  justify-self: center;
-  width: 48px;
-  height: 48px;
-  /* Node center at 20px = card padding-top, so first line of title lines up with node */
-  margin-top: -4px;
-  background: var(--color-surface);
-  border: 4px solid var(--color-brand-pink);
-  border-radius: 50%;
-  box-sizing: border-box;
-  z-index: 1;
-}
-
-/* Date first line aligned with first line of .segs__cardTitle (card padding-top 20px) */
+/* Date on top of timeline row; --segs-date-offset moves it without affecting layout */
 .page--bbc .segs__date {
   grid-column: 1;
+  grid-row: 1;
   text-align: right;
   font-size: 0.9rem;
   line-height: 1.4;
   font-weight: 600;
   color: var(--color-text-secondary);
-  padding-top: 20px;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-bg-main) 50%, transparent);
+  transform: translateY(var(--segs-date-offset, 0px));
+}
+
+/* Node in row 2, column 2 */
+.page--bbc .segs__milestone::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  justify-self: center;
+  width: 48px;
+  height: 48px;
+  margin-top: -4px;
+  transform: translateY(var(--segs-node-offset, 0px));
+  background: var(--color-surface);
+  border: 4px solid var(--color-brand-pink);
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.page--bbc .segs__date::after {
+  content: none;
 }
 
 .page--bbc .segs__card {
   grid-column: 3;
+  grid-row: 2;
   max-width: 720px;
   padding: 20px 24px;
   min-height: 60px;
-  background: var(--color-surface);
+  background: var(--color-bg-main);
   border: 1px solid color-mix(in srgb, var(--color-divider) 0.7, var(--color-bg-main));
   border-radius: 12px;
   min-width: 0;
   box-shadow: 0 2px 12px color-mix(in srgb, var(--color-text-primary) 0.04);
 }
 
+/* Vertically centre card content when there’s no Key Achievements or media */
+.page--bbc .segs__card:not(:has(.segs__cardAchievements)):not(:has(.segs__media)) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page--bbc .segs__media {
+  margin: 0.75rem 0 0.75rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-divider) 0.7, var(--color-bg-main));
+  background: var(--color-bg-main);
+}
+
+.page--bbc .segs__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  object-position: top;
+}
+
+/* Milestone card text — slightly larger on BBC page */
+.page--bbc .segs__card .segs__cardTitle {
+  font-size: 1.15rem;
+}
+
+.page--bbc .segs__card .segs__cardAchievementsLabel,
+.page--bbc .segs__card .segs__cardAchievementsList {
+  font-size: 1.02rem;
+}
+
+.page--bbc .segs__card .segs__cardAchievementsList li {
+  line-height: 1.55;
+}
+
 .segs__cardTitle {
   margin: 0 0 0.5rem;
+  font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-text-secondary);
@@ -2069,13 +2202,16 @@ main {
   }
 
   .page--bbc .segs__timeline {
+    --segs-pad-x: 16px;
+    --segs-gap: 16px;
+
     grid-template-columns: 24px 1fr;
-    column-gap: 16px;
-    padding: 0.5rem 16px 0.5rem;
+    column-gap: var(--segs-gap);
+    padding: 0.5rem var(--segs-pad-x);
   }
 
   .page--bbc .segs__rail {
-    left: calc(16px + (24px - 6px) / 2);
+    left: calc(var(--segs-pad-x) + (24px / 2) - 3px);
     width: 6px;
   }
 
@@ -2089,20 +2225,27 @@ main {
   .page--bbc .segs__milestone::before {
     grid-column: 1;
     grid-row: 2;
-    /* Node center at 16px to match card padding (1rem) on mobile */
     margin-top: -4px;
+    transform: translateY(var(--segs-node-offset, 0px));
     width: 40px;
     height: 40px;
-    border-color: var(--color-brand-pink);
   }
 
+  /* Date above card, full width and centred (avoids truncation in narrow rail column) */
   .page--bbc .segs__date {
     grid-column: 1 / -1;
     grid-row: 1;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     text-align: left;
+    margin-left: 16px;
     font-size: 0.82rem;
-    line-height: 1.4;
-    padding-top: 0;
+    padding: 0.35rem 0.5rem;
+    margin-bottom: 0.25rem;
+    transform: none;
+    box-sizing: border-box;
   }
 
   .page--bbc .segs__card {
