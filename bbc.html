@@ -43,93 +43,102 @@
       })();
     </script>
     <main>
-      <section class="hero hero--page">
-        <div class="shell">
-          <div class="work-hero-inner">
-            <div class="work-hero__copy">
-              <h1>BBC</h1>
-              <p class="work-hero__role">Graduate Business Analyst</p>
-              <p class="work-hero__body">I worked on products used by millions, where reliability and clarity matter. I shipped during live news moments and long-running platform work, from elections to personalisation.</p>
-            </div>
-            <div class="work-hero__media">
-              <img src="assets/default.png" alt="" class="work-hero__image" />
-            </div>
+      <section class="segs">
+        <div class="segs__hero">
+          <div class="segs__logo">
+            <img src="assets/bbclogo.svg" alt="BBC" />
           </div>
+          <h1 class="segs__title">BBC Software Engineering Graduate Scheme</h1>
+          <p class="segs__subhead">Recommendations • World Service • Elections • Short Form Video</p>
+          <!-- <p class="segs__lead">I completed the BBC's Software Engineering Graduate Scheme (2019–2021), starting as a Software Engineer working on Universal Recommendations and with the World Service.</p>
+          <p class="segs__lead">During the programme I pivoted into Business Analysis which better matched my strengths, arranging my own BA rotations across the business.</p>
+          <p class="segs__lead">I worked in the Elections team during the 2020 US Election, and finished the scheme working with the Short Form Video team.</p> -->
         </div>
-      </section>
 
-      <section class="section section--scale-under-hero">
-        <div class="shell">
-          <div class="work-scale">
-            <div class="work-scale__block">
-              <h3>Global reach</h3>
-              <p>Products designed for worldwide audiences.</p>
+        <div class="segs__timeline">
+          <div class="segs__rail" aria-hidden="true"></div>
+
+          <article class="segs__milestone">
+            <span class="segs__date">Sept 2019</span>
+            <div class="segs__card">
+              <h3 class="segs__cardTitle">Joined BBC Software Engineering Graduate Scheme</h3>
+              <h3 class="segs__cardTitle">1st rotation in Personalisation team</h3>
+              <div class="segs__cardAchievements">
+                <p class="segs__cardAchievementsLabel"><strong>Key Achievements:</strong></p>
+                <ul class="segs__cardAchievementsList">
+                  <li>Worked on Universal Recommendations engine during release process</li>
+                  <li>Built internal facing Visualisation Tool</li>
+                </ul>
+              </div>
             </div>
-            <div class="work-scale__block">
-              <h3>High-pressure delivery</h3>
-              <p>Shipping during live news moments.</p>
+          </article>
+
+          <article class="segs__milestone">
+            <span class="segs__date">March 2020</span>
+            <div class="segs__card">
+              <h3 class="segs__cardTitle">2nd rotation in World Service team</h3>
+              <div class="segs__cardAchievements">
+                <p class="segs__cardAchievementsLabel"><strong>Key Achievements:</strong></p>
+                <ul class="segs__cardAchievementsList">
+                  <li>Worked on BBC's open-source Simorgh Web App</li>
+                  <li>Transitioned role to Business Analyst</li>
+                  <li>Managed projects to add AMP-specific cookies banner, Ad Slots for international audiences, and cache localisation</li>
+                </ul>
+              </div>
             </div>
-            <div class="work-scale__block">
-              <h3>Platform surfaces</h3>
-              <p>Homepage, results pages, recommendations, front pages.</p>
+          </article>
+
+          <article class="segs__milestone">
+            <span class="segs__date">Sept 2020</span>
+            <div class="segs__card">
+              <h3 class="segs__cardTitle">3rd rotation in Elections team</h3>
+              <div class="segs__cardAchievements">
+                <p class="segs__cardAchievementsLabel"><strong>Key Achievements:</strong></p>
+                <ul class="segs__cardAchievementsList">
+                  <li>Delivered banner &amp; admin tooling on BBC Homepage, country interactive page, and state pages</li>
+                  <li>Worked with Reuters on interactives integration &amp; fixes and worked with data partner on rehearsals</li>
+                  <li>Planned live coverage logistics under Covid constraints</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </article>
 
-      <section class="section">
-        <div class="shell">
-          <div class="surfaces-band">
-            <span class="surfaces-band__tag">Homepage</span>
-            <span class="surfaces-band__sep">•</span>
-            <span class="surfaces-band__tag">Results</span>
-            <span class="surfaces-band__sep">•</span>
-            <span class="surfaces-band__tag">World Service</span>
-            <span class="surfaces-band__sep">•</span>
-            <span class="surfaces-band__tag">Recommendations</span>
-            <span class="surfaces-band__sep">•</span>
-            <span class="surfaces-band__tag">Video</span>
-          </div>
-        </div>
-      </section>
+          <article class="segs__milestone">
+            <span class="segs__date">Nov 2020</span>
+            <div class="segs__card">
+              <div class="segs__cardAchievements">
+                              <h3 class="segs__cardTitle">2020 United States Elections: Presidential, Senate, &amp; House</h3>
 
-      <section class="section">
-        <div class="shell">
-          <h2 class="work-section-heading">Deliveries</h2>
-          <ul class="timeline">
-            <li class="timeline-item">
-              <span class="timeline-item__role">Business Analyst</span>
-              <h3 class="timeline-item__title">US Election 2020</h3>
-              <p class="timeline-item__desc">Election banner, results homepage, and supporting pages with editorial controls for multiple languages and live data flows.</p>
-            </li>
-            <li class="timeline-item">
-              <span class="timeline-item__role">Business Analyst</span>
-              <h3 class="timeline-item__title">World Service platform rebuild</h3>
-              <p class="timeline-item__desc">Redeveloped dozens of World Service news front pages in React as part of a shared platform approach.</p>
-            </li>
-            <li class="timeline-item">
-              <span class="timeline-item__role">Business Analyst</span>
-              <h3 class="timeline-item__title">Universal Recommendations Engine</h3>
-              <p class="timeline-item__desc">Contributed to the recommendations platform used across BBC products, with additional care where News required stricter controls.</p>
-            </li>
-            <li class="timeline-item">
-              <span class="timeline-item__role">Business Analyst</span>
-              <h3 class="timeline-item__title">Short-form video recommendations</h3>
-              <p class="timeline-item__desc">Integrated recommendations into short-form video and ran A/B tests on placement to improve engagement.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
+                <p class="segs__cardAchievementsLabel"><strong>Key Achievements:</strong></p>
+                <ul class="segs__cardAchievementsList">
+                  <li>Released products to users, banner released at top of BBC Homepage throughout one of the highest traffic periods in the site's history</li>
+                  <li>Overnight shift at New Broadcasting House monitoring coverage &amp; handling live issues</li>
+                  <li>Election called, banner retired and pages moved to evergreen coverage</li>
+                </ul>
+              </div>
+            </div>
+          </article>
 
-      <section class="section">
-        <div class="shell">
-          <h2 class="work-section-heading">What I'm good at here</h2>
-          <ul class="work-bullets">
-            <li>Clear scope and fast alignment</li>
-            <li>Calm delivery under pressure</li>
-            <li>Translating technical detail for non-technical stakeholders</li>
-            <li>Iterating with evidence</li>
-          </ul>
+          <article class="segs__milestone">
+            <span class="segs__date">March 2021</span>
+            <div class="segs__card">
+              <h3 class="segs__cardTitle">4th rotation in SFV team</h3>
+              <div class="segs__cardAchievements">
+                <p class="segs__cardAchievementsLabel"><strong>Key Achievements:</strong></p>
+                <ul class="segs__cardAchievementsList">
+                  <li>Integrated Universal Recommendations into video pages</li>
+                  <li>Ran A/B test comparing recommendation placement beside vs below video</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="segs__milestone">
+            <span class="segs__date">June 2021</span>
+            <div class="segs__card">
+              <h3 class="segs__cardTitle">Completed BBC SEGS &amp; joined BBC Monitoring as Business Analyst</h3>
+            </div>
+          </article>
         </div>
       </section>
     </main>

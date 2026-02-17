@@ -6,7 +6,7 @@
     <title>The Economist - Ben Fellows</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="page page--economist">
     <header class="site-header">
       <div class="shell site-header-inner">
         <div class="site-header-row">
@@ -48,20 +48,17 @@
           <div class="econ-hero__copy">
             <h1 class="econ-hero__title">The Economist</h1>
             <p class="econ-hero__subheading">Product Manager - CMS &amp; Content Platform</p>
-            <p class="econ-hero__body">I lead the platform that powers The Economist's digital publishing across web, app, audio and syndication.</p>
-            <p class="econ-hero__body">This is mission-critical infrastructure used daily by editorial teams worldwide.</p>
+            <p class="econ-hero__body">I manage the platform that powers The Economist's digital publishing across web, app, audio and syndication.</p>
+            <p class="econ-hero__body">The systems I oversee:</p>
             <ul class="econ-hero__list">
-              <li>Powers the publishing platform behind one of the world's most influential news organisations.</li>
+              <li>Supports The Economist's global publishing across web, app, audio, and syndication.</li>
               <li>Delivers trusted journalism to policymakers, business leaders, and institutions worldwide.</li>
-              <li>Supports global publishing across web, app, audio, and syndication.</li>
               <li>Enables a digital subscription ecosystem serving a worldwide audience.</li>
             </ul>
           </div>
           <div class="econ-hero__media">
             <div class="econ-hero__carousel" aria-hidden="true">
-              <img src="assets/econcover1.png" alt="" class="econ-hero__image econ-hero__image--1" />
-              <img src="assets/econcover2.png" alt="" class="econ-hero__image econ-hero__image--2" />
-              <img src="assets/econcover3.png" alt="" class="econ-hero__image econ-hero__image--3" />
+              <img src="assets/economistcovers/econcover1.png" alt="" class="econ-hero__image" />
             </div>
           </div>
         </div>
@@ -280,6 +277,83 @@
         <p>© Ben Fellows</p>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var img = document.querySelector('.econ-hero__carousel .econ-hero__image');
+        if (!img) return;
+
+        var covers = [
+          'assets/economistcovers/econcover1.png',
+          'assets/economistcovers/econcover2.png',
+          'assets/economistcovers/econcover3.png',
+          'assets/economistcovers/econcover4.png',
+          'assets/economistcovers/econcover5.png',
+          'assets/economistcovers/econcover6.png',
+          'assets/economistcovers/econcover7.png',
+        ];
+
+        function shuffle(arr) {
+          for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+          }
+          return arr;
+        }
+
+        var order = shuffle(covers.slice());
+        var idx = 0;
+        img.src = order[idx];
+
+        // Single knob: how long each cover stays on screen (ms).
+        // Example: 5000 = 5 seconds per cover.
+        var COVER_HOLD_MS = 5000;
+
+        var reduce = false;
+        try {
+          reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        } catch (e) {}
+
+        var intervalMs = reduce ? 5000 : COVER_HOLD_MS;
+        var fadeMs = reduce ? 0 : 500;
+
+        function advance() {
+          var swap = function () {
+            idx += 1;
+            if (idx >= order.length) {
+              var last = order[order.length - 1];
+              order = shuffle(covers.slice());
+              if (order.length > 1 && order[0] === last) {
+                order.push(order.shift());
+              }
+              idx = 0;
+            }
+            img.src = order[idx];
+          };
+
+          if (!fadeMs) {
+            swap();
+            return;
+          }
+
+          img.classList.add('is-fading');
+          window.setTimeout(function () {
+            swap();
+            img.classList.remove('is-fading');
+            img.classList.add('is-entering');
+            window.requestAnimationFrame(function () {
+              window.requestAnimationFrame(function () {
+                img.classList.remove('is-entering');
+              });
+            });
+          }, fadeMs);
+        }
+
+        window.setInterval(advance, intervalMs);
+      })();
+    </script>
 
     <script>
       document.querySelectorAll("[data-accordion] .accordion-header").forEach((button) => {
