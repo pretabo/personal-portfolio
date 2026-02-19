@@ -185,7 +185,7 @@
               </article>
               <article class="selected-work-card">
                 <div class="selected-work-card__img-wrap">
-                  <img src="assets/screenshots/insider.jpeg" alt="" class="selected-work-card__img" />
+                  <img src="assets/screenshots/insider.png" alt="" class="selected-work-card__img" />
                 </div>
                 <h3 class="selected-work-card__title">Insider Infrastructure</h3>
                 <p class="selected-work-card__org">The Economist</p>
@@ -274,6 +274,22 @@
             trigger.classList.toggle('nav-work-trigger--active', open);
           });
         }
+      
+        var nameEl = document.querySelector('.site-brand .site-name');
+        var roleEl = document.querySelector('.site-brand .site-role');
+
+        function goHome() {
+          var path = (window.location && window.location.pathname) || '';
+          var isHome = path === '/' || /\/index\.html$/.test(path);
+          if (isHome) {
+            window.scrollTo(0, 0);
+            return;
+          }
+          window.location.href = 'index.html';
+        }
+
+        if (nameEl) nameEl.addEventListener('click', goHome);
+        if (roleEl) roleEl.addEventListener('click', goHome);
       })();
       (function () {
         var grid = document.getElementById('pill-grid');

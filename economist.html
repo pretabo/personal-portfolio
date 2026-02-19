@@ -40,6 +40,22 @@
             trigger.classList.toggle('nav-work-trigger--active', open);
           });
         }
+      
+        var nameEl = document.querySelector('.site-brand .site-name');
+        var roleEl = document.querySelector('.site-brand .site-role');
+
+        function goHome() {
+          var path = (window.location && window.location.pathname) || '';
+          var isHome = path === '/' || /\/index\.html$/.test(path);
+          if (isHome) {
+            window.scrollTo(0, 0);
+            return;
+          }
+          window.location.href = 'index.html';
+        }
+
+        if (nameEl) nameEl.addEventListener('click', goHome);
+        if (roleEl) roleEl.addEventListener('click', goHome);
       })();
     </script>
     <main>
@@ -394,6 +410,11 @@
           document.querySelectorAll("[data-accordion] .accordion-item").forEach((el) => el.classList.remove("is-open"));
           if (!open) {
             item.classList.add("is-open");
+            var banner = document.querySelector(".site-header");
+            var bannerHeight = banner ? banner.offsetHeight : 0;
+            var rect = button.getBoundingClientRect();
+            var scrollTop = window.scrollY + rect.top - bannerHeight;
+            window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
           }
         });
       });

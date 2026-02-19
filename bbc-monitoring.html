@@ -40,42 +40,65 @@
             trigger.classList.toggle('nav-work-trigger--active', open);
           });
         }
+
+        var nameEl = document.querySelector('.site-brand .site-name');
+        var roleEl = document.querySelector('.site-brand .site-role');
+
+        function goHome() {
+          var path = (window.location && window.location.pathname) || '';
+          var isHome = path === '/' || /\/index\.html$/.test(path);
+          if (isHome) {
+            window.scrollTo(0, 0);
+            return;
+          }
+          window.location.href = 'index.html';
+        }
+
+        if (nameEl) nameEl.addEventListener('click', goHome);
+        if (roleEl) roleEl.addEventListener('click', goHome);
       })();
     </script>
+
     <main>
-      <section class="hero hero--page">
-        <div class="shell">
-          <div class="work-hero-inner">
-            <div class="work-hero__copy">
-              <h1>BBC Monitoring</h1>
-              <p class="work-hero__role">Business Analyst</p>
-              <p class="work-hero__body">I helped rebuild the BBC Monitoring subscriber experience and the publishing tools behind it. The focus was speed, resilience, and clarity for teams working under real operational constraints.</p>
-            </div>
-            <div class="work-hero__media">
-              <img src="assets/default.png" alt="" class="work-hero__image" />
-            </div>
-          </div>
+      <!-- 1. Full-bleed hero -->
+      <section class="bbcm-hero" aria-label="BBC Monitoring overview">
+        <div class="bbcm-hero__bg" role="img" aria-hidden="true"></div>
+        <div class="bbcm-hero__overlay" aria-hidden="true"></div>
+
+        <div class="bbcm-hero__content shell">
+          <h1 class="bbcm-hero__org">BBC Monitoring</h1>
+
+          <h2 class="bbcm-hero__title">Understanding how the world reports the world</h2>
+
+          <p class="bbcm-hero__lede">
+            Timely global media insight for governments, institutions, and commercial customers.
+          </p>
+
+          <p class="bbcm-hero__role">Business Analyst • Jun 2021 – Oct 2022</p>
+          <p class="bbcm-hero__impact">Focused on rebuilding core tools, improving discovery, and modernising publishing workflows.</p>
         </div>
       </section>
 
-      <section class="section">
+      <!-- 2. At-a-glance briefing strip -->
+      <section class="section" aria-labelledby="bbcm-at-a-glance-heading">
         <div class="shell">
+          <h2 id="bbcm-at-a-glance-heading" class="work-section-heading">At a glance</h2>
           <div class="briefing-strip">
             <div class="briefing-strip__item">
               <span class="briefing-strip__label">Scope</span>
-              <p class="briefing-strip__desc">Subscriber portal rebuild, search overhaul, bespoke CMS, international bureau rollout.</p>
+              <p class="briefing-strip__desc">Subscriber portal rebuild • Search overhaul • Bespoke CMS • International rollout.</p>
             </div>
             <div class="briefing-strip__item">
-              <span class="briefing-strip__label">Constraints</span>
-              <p class="briefing-strip__desc">Low connectivity, sensitive data.</p>
+              <span class="briefing-strip__label">Portal</span>
+              <p class="briefing-strip__desc">React migration and redesign including homepage, articles, search overhaul, and new content type delivered within restricted budget.</p>
             </div>
             <div class="briefing-strip__item">
-              <span class="briefing-strip__label">Outcome</span>
-              <p class="briefing-strip__desc">A platform teams could depend on for speed, resilience, and clarity.</p>
+              <span class="briefing-strip__label">CMS</span>
+              <p class="briefing-strip__desc">AWS-based CMS built from inception, replacing legacy workflows and improving resilience for business-critical publishing.</p>
             </div>
             <div class="briefing-strip__item">
               <span class="briefing-strip__label">Stakeholders</span>
-              <p class="briefing-strip__desc">Product, engineering, BBC and customer teams across Monitoring and News.</p>
+              <p class="briefing-strip__desc">Worked with BBC teams, government partners, and commercial customers.</p>
             </div>
           </div>
         </div>
@@ -83,51 +106,88 @@
 
       <hr />
 
-      <section class="section">
+      <!-- 3. What BBC Monitoring does -->
+      <section class="section" aria-labelledby="bbcm-what-heading">
         <div class="shell">
-          <h2 class="work-section-heading">Capabilities</h2>
-          <div class="capabilities-two-col">
-            <div class="capabilities-two-col__headings">
-              <h3 class="capabilities-two-col__title">Portal rebuild</h3>
-              <h3 class="capabilities-two-col__title">Search &amp; discovery</h3>
-              <h3 class="capabilities-two-col__title">CMS platform</h3>
-            </div>
-            <div class="capabilities-two-col__body">
-              <p>Led the redesign and release of the portal in React, including articles, a reworked homepage, and improved discovery.</p>
-              <p>Overhauled search so customers could find what they needed faster, with clearer filtering and more reliable results.</p>
-              <p>Created a bespoke CMS and curation tooling, built for resilience and iterative change as needs evolved.</p>
-            </div>
+          <h2 id="bbcm-what-heading" class="work-section-heading">What BBC Monitoring does</h2>
+          <div class="bbcm-cards">
+            <article class="bbcm-card">
+              <h3 class="bbcm-card__title">Track &amp; translate</h3>
+              <p class="bbcm-card__body">Monitors broadcast, print, online and social media in multiple languages.</p>
+            </article>
+            <article class="bbcm-card">
+              <h3 class="bbcm-card__title">Explain narratives</h3>
+              <p class="bbcm-card__body">Provides context on how governments and media frame events.</p>
+            </article>
+            <article class="bbcm-card">
+              <h3 class="bbcm-card__title">Operational insight</h3>
+              <p class="bbcm-card__body">Supports organisations that rely on accurate, timely global intelligence.</p>
+            </article>
           </div>
         </div>
       </section>
 
       <hr />
 
-      <section class="section">
+      <!-- 4. My work -->
+      <section class="section" aria-labelledby="bbcm-my-work-heading">
         <div class="shell">
-          <div class="work-callout">
-            <p>A lot of the job was turning messy real-world constraints into something teams could rely on.</p>
+          <h2 id="bbcm-my-work-heading" class="work-section-heading">My work</h2>
+
+          <div class="bbcm-modules">
+            <!-- Module A: User Portal -->
+            <article class="bbcm-module bbcm-module--primary">
+              <div class="bbcm-module__content">
+                <p class="bbcm-module__label label">User Portal</p>
+                <ul class="bbcm-module__list">
+                  <li>Led migration and redesign of the subscriber portal to React.</li>
+                  <li>Reimagined homepage and article templates.</li>
+                  <li>Overhauled search to improve discovery.</li>
+                  <li>Delivered a new content type within restricted budget.</li>
+                  <li>Led analytics improvements to enable data-led decisions.</li>
+                  <li>Managed stakeholders across BBC teams, government partners, and commercial customers.</li>
+                </ul>
+              </div>
+              <div class="bbcm-module__media">
+                <img src="assets/screenshots/default.png" alt="" class="bbcm-module__img" />
+              </div>
+            </article>
+
+            <!-- Module B: CMS Platform -->
+            <article class="bbcm-module bbcm-module--primary">
+              <div class="bbcm-module__content">
+                <p class="bbcm-module__label label">CMS Platform</p>
+                <ul class="bbcm-module__list">
+                  <li>Designed and delivered a bespoke CMS from inception to rollout.</li>
+                  <li>Built on AWS to modernise curation tools and improve resilience.</li>
+                  <li>Initially created for contractors; later replaced wider editorial workflows.</li>
+                  <li>Oversaw phased rollout to international bureaus including Delhi and Nairobi.</li>
+                </ul>
+              </div>
+              <div class="bbcm-module__media">
+                <img src="assets/screenshots/default.png" alt="" class="bbcm-module__img" />
+              </div>
+            </article>
+
+            <!-- Module C: Collaboration (secondary) -->
+            <article class="bbcm-module bbcm-module--secondary">
+              <p class="bbcm-module__label label">Collaboration</p>
+              <ul class="bbcm-module__list">
+                <li>Integrated News and Monitoring BA communities to improve collaboration and shared practices.</li>
+              </ul>
+            </article>
           </div>
         </div>
       </section>
 
-      <hr />
-
-      <section class="section">
+      <!-- 5. Outcomes strip -->
+      <section class="bbcm-outcomes" aria-label="Outcomes">
         <div class="shell">
-          <h2 class="work-section-heading">Responsibilities</h2>
-          <div class="work-split">
-            <div class="work-split__intro">
-              <p>I worked across product, engineering, and stakeholders to deliver a platform teams could depend on.</p>
-            </div>
-            <ul class="work-split__list">
-              <li>Portal migration and delivery planning</li>
-              <li>Stakeholder management across BBC and customers</li>
-              <li>CMS workflow definition and rollout</li>
-              <li>Analytics improvement initiative</li>
-              <li>Cross-team collaboration across Monitoring and News</li>
-            </ul>
-          </div>
+          <p class="bbcm-outcomes__text" aria-label="Faster discovery for customers. More resilient publishing workflows. Stronger decision-making through improved analytics.">
+            <span class="bbcm-outcomes__phrase">Faster discovery for customers</span>
+            <span class="bbcm-outcomes__phrase">More resilient publishing workflows</span>
+            <span class="bbcm-outcomes__phrase">Stronger decision-making through improved analytics</span>
+          </p>
         </div>
       </section>
     </main>
@@ -139,4 +199,3 @@
     </footer>
   </body>
 </html>
-

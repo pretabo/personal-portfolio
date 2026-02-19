@@ -171,6 +171,11 @@ input:focus-visible {
   gap: 2px;
 }
 
+.site-brand .site-name,
+.site-brand .site-role {
+  cursor: pointer !important;
+}
+
 .site-name {
   font-weight: 700;
 }
@@ -279,15 +284,37 @@ input:focus-visible {
   }
 
   .site-name {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
   }
 
   .site-role {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 
   .nav-work-sub {
     justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 6px 0 10px;
+    gap: 12px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .nav-work-sub::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-work-sub.is-open {
+    max-height: 48px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+  }
+
+  .nav-work-sub a {
+    flex-shrink: 0;
   }
 }
 
@@ -335,10 +362,6 @@ main {
   display: inline-block;
   width: fit-content;
   max-width: 100%;
-  background: color-mix(in srgb, var(--color-surface) 78%, transparent);
-  padding: 0.6rem 0.9rem;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px color-mix(in srgb, var(--color-text-primary) 0.06);
 }
 
 .hero-text-bg:first-of-type {
@@ -590,6 +613,13 @@ main {
 
   .hero-body {
     font-size: 1.1rem;
+  }
+
+  .hero-text-bg {
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    padding: 0.6rem 0.9rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--color-text-primary) 0.06);
   }
 }
 
@@ -1398,6 +1428,13 @@ main {
   margin: 0 0 0.35em;
 }
 
+.work-hero__intro {
+  margin: 0 0 1em;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
 .work-hero__role {
   margin: 0 0 0.75em;
   font-size: 1.05rem;
@@ -1647,6 +1684,366 @@ main {
   border: none;
   border-top: 1px solid var(--color-divider);
   margin: 2rem 0;
+}
+
+.page--bbcm .section .work-section-heading {
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.32rem;
+  line-height: 1.3;
+}
+
+.page--bbcm .section .work-section-heading:not(#bbcm-at-a-glance-heading) {
+  margin-top: 0.75rem;
+}
+
+/* BBC Monitoring — full-bleed hero */
+.page--bbcm main {
+  overflow-x: hidden;
+}
+
+.page--bbcm .bbcm-hero {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  margin-left: calc(50% - 50vw);
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0 64px;
+  overflow: hidden;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-surface) 18%, transparent);
+}
+
+.page--bbcm .bbcm-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/screenshots/default.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.page--bbcm .bbcm-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-text-primary) 60%, transparent) 0%,
+    color-mix(in srgb, var(--color-text-primary) 75%, transparent) 100%
+  );
+}
+
+.page--bbcm .bbcm-hero__content {
+  position: relative;
+  z-index: 1;
+  color: var(--color-surface);
+  max-width: 36em;
+}
+
+.page--bbcm .bbcm-hero__org {
+  margin: 0 0 0.4em;
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--color-surface);
+}
+
+.page--bbcm .bbcm-hero__title {
+  margin: 0 0 0.6em;
+  max-width: 22ch;
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--color-surface) 90%, transparent);
+}
+
+.page--bbcm .bbcm-hero__lede {
+  margin: 0 0 1.25rem;
+  max-width: 48ch;
+  font-size: clamp(1.05rem, 1.65vw, 1.2rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-surface) 95%, transparent);
+}
+
+.page--bbcm .bbcm-hero__role {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: color-mix(in srgb, var(--color-surface) 68%, transparent);
+}
+
+.page--bbcm .bbcm-hero__impact {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--color-surface) 68%, transparent);
+}
+
+/* What BBC Monitoring does — cards */
+.page--bbcm .bbcm-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  min-width: 0;
+}
+
+.page--bbcm .bbcm-card {
+  padding: 1.5rem 1.75rem;
+  background: color-mix(in srgb, var(--color-divider) 0.08, var(--color-surface));
+  border: 1px solid color-mix(in srgb, var(--color-divider) 0.65, var(--color-bg-main));
+  border-radius: 8px;
+  min-width: 0;
+  transition: box-shadow 180ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page--bbcm .bbcm-card {
+    animation: bbcm-fade-in 0.4s ease both;
+  }
+  .page--bbcm .bbcm-card:nth-child(1) { animation-delay: 0.05s; }
+  .page--bbcm .bbcm-card:nth-child(2) { animation-delay: 0.1s; }
+  .page--bbcm .bbcm-card:nth-child(3) { animation-delay: 0.15s; }
+}
+
+@keyframes bbcm-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page--bbcm .bbcm-card:hover {
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--color-text-primary) 0.06);
+}
+
+.page--bbcm .bbcm-card__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.225rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+}
+
+.page--bbcm .bbcm-card__body {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.58;
+  color: var(--color-text-primary);
+}
+
+/* At a glance — briefing strip (scoped) */
+.page--bbcm #bbcm-at-a-glance-heading {
+  margin-top: 0.35rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+}
+
+.page--bbcm .briefing-strip__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.page--bbcm .section .briefing-strip {
+  gap: 32px 40px;
+}
+
+.page--bbcm .briefing-strip__item {
+  padding-left: 0;
+}
+
+.page--bbcm .briefing-strip__item:not(:first-child) {
+  padding-left: 1.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-divider) 0.7, transparent);
+}
+
+.page--bbcm .briefing-strip__desc::first-line {
+  font-weight: 700;
+}
+
+.page--bbcm .briefing-strip__desc {
+  line-height: 1.55;
+}
+
+/* My work — modules */
+.page--bbcm .bbcm-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.page--bbcm .bbcm-module {
+  padding: 1.75rem 2rem;
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-divider) 0.7, var(--color-bg-main));
+  border-radius: 8px;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--color-text-primary) 0.04);
+}
+
+.page--bbcm .bbcm-module--primary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
+  gap: 32px 40px;
+  align-items: start;
+}
+
+.page--bbcm .bbcm-module__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+}
+
+.page--bbcm .bbcm-module__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+}
+
+.page--bbcm .bbcm-module__list li {
+  margin-bottom: 0.6em;
+}
+
+.page--bbcm .bbcm-module__list li:first-child {
+  font-weight: 700;
+}
+
+.page--bbcm .bbcm-module__list li:last-child {
+  margin-bottom: 0;
+}
+
+.page--bbcm .bbcm-module--secondary {
+  max-width: 640px;
+  opacity: 0.92;
+}
+
+.page--bbcm .bbcm-module--secondary .bbcm-module__list,
+.page--bbcm .bbcm-module--secondary .bbcm-module__label {
+  color: var(--color-text-secondary);
+}
+
+.page--bbcm .bbcm-module__media {
+  min-width: 0;
+}
+
+.page--bbcm .bbcm-module__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--color-divider) 0.6, var(--color-bg-main));
+}
+
+/* Outcomes strip */
+.page--bbcm .bbcm-outcomes {
+  padding: 2.25rem 0 100px;
+  margin-top: 48px;
+  border-top: 1px solid color-mix(in srgb, var(--color-divider) 0.5, transparent);
+  background: color-mix(in srgb, var(--color-divider) 0.15, var(--color-bg-main));
+}
+
+.page--bbcm .bbcm-outcomes__text {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.045em;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.page--bbcm .bbcm-outcomes__phrase:not(:last-child)::after {
+  content: " · ";
+  margin-left: 0.75rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+/* BBC Monitoring — responsive */
+@media (max-width: 720px) {
+  .page--bbcm .bbcm-hero {
+    min-height: 50vh;
+    padding: 60px 0 44px;
+  }
+
+  .page--bbcm .bbcm-hero__org {
+    margin-bottom: 0.3em;
+    font-size: clamp(2.2rem, 6vw, 2.75rem);
+  }
+
+  .page--bbcm .bbcm-hero__title {
+    margin-bottom: 0.5em;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  .page--bbcm .briefing-strip__item:not(:first-child) {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-divider) 0.5, transparent);
+  }
+
+  .page--bbcm .section .briefing-strip {
+    gap: 1.25rem;
+  }
+
+  .page--bbcm .bbcm-cards {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .page--bbcm .bbcm-module--primary {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .page--bbcm .bbcm-module__media {
+    order: -1;
+  }
+
+  .page--bbcm .bbcm-modules {
+    gap: 2.5rem;
+  }
+
+  .page--bbcm .bbcm-outcomes {
+    padding: 1.75rem 0 80px;
+    margin-top: 36px;
+  }
+
+  .page--bbcm .bbcm-outcomes__text {
+    font-size: 0.9rem;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .page--bbcm .bbcm-outcomes__phrase:not(:last-child)::after {
+    margin-left: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page--bbcm .bbcm-hero__bg,
+  .page--bbcm .bbcm-hero__overlay {
+    animation: none;
+  }
+  .page--bbcm .bbcm-card {
+    animation: none;
+  }
 }
 
 .briefing-strip {

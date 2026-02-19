@@ -40,6 +40,22 @@
             trigger.classList.toggle('nav-work-trigger--active', open);
           });
         }
+      
+        var nameEl = document.querySelector('.site-brand .site-name');
+        var roleEl = document.querySelector('.site-brand .site-role');
+
+        function goHome() {
+          var path = (window.location && window.location.pathname) || '';
+          var isHome = path === '/' || /\/index\.html$/.test(path);
+          if (isHome) {
+            window.scrollTo(0, 0);
+            return;
+          }
+          window.location.href = 'index.html';
+        }
+
+        if (nameEl) nameEl.addEventListener('click', goHome);
+        if (roleEl) roleEl.addEventListener('click', goHome);
       })();
     </script>
     <main>
