@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Other Work — Ben Fellows</title>
+    <title>Other Work - Ben Fellows</title>
+    <meta name="description" content="Engineering roots, international experience and technical grounding that shape product work." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page page--other">
@@ -40,103 +41,188 @@
             trigger.classList.toggle('nav-work-trigger--active', open);
           });
         }
-      
         var nameEl = document.querySelector('.site-brand .site-name');
         var roleEl = document.querySelector('.site-brand .site-role');
-
         function goHome() {
           var path = (window.location && window.location.pathname) || '';
           var isHome = path === '/' || /\/index\.html$/.test(path);
-          if (isHome) {
-            window.scrollTo(0, 0);
-            return;
-          }
+          if (isHome) { window.scrollTo(0, 0); return; }
           window.location.href = 'index.html';
         }
-
         if (nameEl) nameEl.addEventListener('click', goHome);
         if (roleEl) roleEl.addEventListener('click', goHome);
       })();
     </script>
+
     <main>
-      <section class="hero hero--page">
+      <!-- 1. HeroBlock: section intro with title, subhead, body, pill tags -->
+      <section class="hero-block ow-hero" aria-labelledby="ow-hero-title">
         <div class="shell">
-          <div class="work-hero-inner">
-            <div class="work-hero__copy">
-              <h1>Other Work</h1>
-              <p class="work-hero__role">Software Engineer → Product</p>
-              <p class="work-hero__body">Before product, I built software. That background still shapes how I scope work, spot risk early, and partner with engineers at depth.</p>
-            </div>
-            <div class="work-hero__media">
-              <div class="tech-panel">
-                <div class="tech-panel__row">
-                  <span class="tech-panel__label">Stack snapshot</span>
-                </div>
-                <div class="tech-panel__row">
-                  <span class="tech-panel__label">Systems &amp; APIs</span>
-                </div>
-                <div class="tech-panel__row">
-                  <span class="tech-panel__label">Data &amp; analytics</span>
-                </div>
-                <div class="tech-panel__row">
-                  <span class="tech-panel__label">Delivery &amp; architecture</span>
-                </div>
+          <div class="hero-block__copy ow-hero__copy">
+            <h1 id="ow-hero-title" class="hero-block__title ow-hero__title">Other Work</h1>
+            <p class="hero-block__subhead ow-hero__subhead">Software Engineer → Product</p>
+            <p class="hero-block__body ow-hero__body">Before product, I built software. That background still shapes how I scope work, spot risk early, and work closely with engineers to solve the right problems.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. SectionDivider: thin rule with label above -->
+      <div class="section-divider ow-divider">
+        <div class="shell">
+          <h2 class="section-divider__label ow-divider__label">Engineering Roots</h2>
+          <hr class="section-divider__rule ow-divider__rule" />
+        </div>
+      </div>
+
+      <!-- 3. SoftCard grid: Engineering Foundations -->
+      <section class="ow-section ow-section--eng" aria-labelledby="ow-eng-heading">
+        <div class="shell">
+          <h2 id="ow-eng-heading" class="ow-section__title ow-section__title--caps">Engineering foundations</h2>
+          <div class="ow-cards ow-cards--three">
+            <article class="soft-card ow-card ow-card--blue ow-eng-card">
+              <h3 class="soft-card__title ow-card__title">MSc Computer Science</h3>
+              <div class="soft-card__body ow-card__body">
+                <p>Postgraduate study in software engineering, data systems and intelligent systems.</p>
+                <ul class="ow-card__list">
+                  <li>Built production-ready applications and client-server systems.</li>
+                  <li>Developed database-driven software.</li>
+                  <li>Research explored how behavioural prompts influence decision making.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--mauve ow-eng-card">
+              <h3 class="soft-card__title ow-card__title">Early engineering role</h3>
+              <div class="soft-card__body ow-card__body">
+                <p>Built internal systems across sports operations and advertising technology.</p>
+                <ul class="ow-card__list">
+                  <li>Supported the iFAS platform used by Premier League &amp; Football League clubs during transfer windows.</li>
+                  <li>Built tools supporting campaigns across Google, Meta and major social platforms.</li>
+                  <li>Migrated legacy integrations to improve reliability.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--sage ow-eng-card">
+              <h3 class="soft-card__title ow-card__title">BBC Graduate Scheme</h3>
+              <div class="soft-card__body ow-card__body">
+                <p>Completed the BBC's Software Engineering Graduate Scheme across recommendations, elections coverage and short-form video.</p>
+                <ul class="ow-card__list">
+                  <li>Built tooling for the Universal Recommendations engine.</li>
+                  <li>Supported live elections coverage and homepage tooling.</li>
+                  <li>Delivered high-traffic public experiences.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider ow-divider">
+        <div class="shell">
+          <h2 class="section-divider__label ow-divider__label">Global Experience</h2>
+          <hr class="section-divider__rule ow-divider__rule" />
+        </div>
+      </div>
+
+      <!-- 4. International work: two-col with image, date, body -->
+      <section class="ow-section ow-section--tinted" aria-labelledby="ow-intl-heading">
+        <div class="shell">
+          <h2 id="ow-intl-heading" class="ow-section__title ow-section__title--caps">International work</h2>
+          <div class="ow-intl-grid">
+            <article class="ow-intl-entry">
+              <div class="ow-intl-entry__img-wrap">
+                <img class="ow-intl-entry__img" src="assets/vietnam.jpeg" alt="Vietnam" width="120" height="90" />
+              </div>
+              <h3 class="ow-intl-entry__heading">Vietnam <span class="ow-intl-entry__date">(2016–2017)</span></h3>
+              <p class="ow-intl-entry__body">Taught maths and science in Ho Chi Minh City while coordinating with school leadership, teaching assistants and parents.</p>
+            </article>
+            <article class="ow-intl-entry">
+              <div class="ow-intl-entry__img-wrap">
+                <img class="ow-intl-entry__img" src="assets/tanzy.png" alt="Tanzania" width="120" height="90" />
+              </div>
+              <h3 class="ow-intl-entry__heading">Tanzania <span class="ow-intl-entry__date">(2015)</span></h3>
+              <p class="ow-intl-entry__body">Supported small business and entrepreneurship initiatives through community programmes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider ow-divider">
+        <div class="shell">
+          <h2 class="section-divider__label ow-divider__label">Technical Foundation</h2>
+          <hr class="section-divider__rule ow-divider__rule" />
+        </div>
+      </div>
+
+      <!-- 5. MSc feature block: showcase panel -->
+      <section class="ow-section ow-section--msc" aria-labelledby="ow-edu-heading">
+        <div class="shell">
+          <h2 id="ow-edu-heading" class="ow-section__title ow-section__title--caps">Education &amp; technical grounding</h2>
+          <div class="ow-msc-block">
+            <header class="ow-msc-block__header">
+              <h3 class="ow-msc-block__title">MSc Computer Science - Distinction</h3>
+              <p class="ow-msc-block__meta">University of Birmingham</p>
+            </header>
+            <p class="ow-msc-block__intro">This programme strengthened my technical depth and shaped how I approach complex systems and product design.</p>
+            <div class="ow-msc-block__grid">
+              <div class="ow-msc-group">
+                <h4 class="ow-msc-group__title">Core areas</h4>
+                <ul class="ow-msc-group__list">
+                  <li>Software engineering principles, system architecture and maintainable code design</li>
+                  <li>Artificial intelligence, data structures and statistical methods</li>
+                  <li>Database design, data modelling and query optimisation</li>
+                  <li>Human-computer interaction and evaluation methods</li>
+                </ul>
+              </div>
+              <div class="ow-msc-group">
+                <h4 class="ow-msc-group__title">Practical work</h4>
+                <ul class="ow-msc-group__list">
+                  <li>Built a health app exploring whether defining meal healthiness influences food choices</li>
+                  <li>Developed a collaborative client-server game with authentication and chat functionality</li>
+                  <li>Produced a 17,000-word research dissertation combining behavioural science and software design</li>
+                </ul>
               </div>
             </div>
+            <p class="ow-msc-block__toolkit"><strong>Technical toolkit:</strong> Java • SQL • R • XML • client-server architecture • data modelling • statistical analysis</p>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <div class="section-divider ow-divider">
         <div class="shell">
-          <h2 class="work-section-heading">Background</h2>
-          <div class="role-blocks">
-            <div class="role-block">
-              <span class="role-label">MSc Computer Science — University of Birmingham</span>
-              <ul class="work-split__list">
-                <li>Built a health app and research project exploring behaviour change</li>
-                <li>Strong grounding in databases, AI, HCI, and systems; developed collaborative and client-server software projects</li>
-              </ul>
-            </div>
-            <div class="role-block">
-              <span class="role-label">Brainlabs</span>
-              <ul class="work-split__list">
-                <li>Built internal tools integrating with major ad platforms</li>
-                <li>Migrated systems to newer APIs</li>
-              </ul>
-            </div>
-            <div class="role-block">
-              <span class="role-label">Athium</span>
-              <ul class="work-split__list">
-                <li>Worked on football administration systems supporting high-stakes operational windows</li>
-              </ul>
-            </div>
-            <div class="role-block">
-              <span class="role-label">Early career experience</span>
-              <ul class="work-split__list">
-                <li>Learned delivery discipline, stakeholder management, and operational reliability</li>
-              </ul>
-            </div>
-          </div>
+          <h2 class="section-divider__label ow-divider__label">How this shapes my product work</h2>
+          <hr class="section-divider__rule ow-divider__rule" />
         </div>
-      </section>
+      </div>
 
-      <section class="section">
+      <!-- 6. FeatureCard grid: Principles (6 cards) -->
+      <section class="ow-section" aria-labelledby="ow-principles-heading">
         <div class="shell">
-          <div class="principles-panel">
-            <h2 class="principles-panel__title">How this shapes my product work</h2>
-            <div class="principles-panel__item">
-              <h3 class="principles-panel__subhead">I go to the source</h3>
-              <p>I'll read the docs, inspect the data, and sanity-check assumptions before we commit.</p>
-            </div>
-            <div class="principles-panel__item">
-              <h3 class="principles-panel__subhead">I design for maintainability</h3>
-              <p>I avoid quick fixes that become permanent support costs.</p>
-            </div>
-            <div class="principles-panel__item">
-              <h3 class="principles-panel__subhead">I translate complexity</h3>
-              <p>Engineers get clarity; stakeholders get the why without the fog.</p>
-            </div>
+          <h2 id="ow-principles-heading" class="ow-section__title ow-section__title--caps">Principles</h2>
+          <div class="ow-cards ow-cards--three ow-cards--principles">
+            <article class="feature-card ow-card ow-card--blue">
+              <h3 class="feature-card__title ow-card__title">I go to the source</h3>
+              <p class="feature-card__body ow-card__body">I read the docs, inspect the data and sanity-check assumptions before committing.</p>
+            </article>
+            <article class="feature-card ow-card ow-card--mauve">
+              <h3 class="feature-card__title ow-card__title">I design for maintainability</h3>
+              <p class="feature-card__body ow-card__body">I avoid quick fixes that become permanent support costs.</p>
+            </article>
+            <article class="feature-card ow-card ow-card--sage">
+              <h3 class="feature-card__title ow-card__title">I translate complexity</h3>
+              <p class="feature-card__body ow-card__body">Engineers get clarity. Stakeholders get the why.</p>
+            </article>
+            <article class="feature-card ow-card ow-card--mauve">
+              <h3 class="feature-card__title ow-card__title">I understand the system before changing it</h3>
+              <p class="feature-card__body ow-card__body">I map dependencies, constraints and failure points before proposing solutions.</p>
+            </article>
+            <article class="feature-card ow-card ow-card--sage">
+              <h3 class="feature-card__title ow-card__title">I balance speed with long-term cost</h3>
+              <p class="feature-card__body ow-card__body">Shipping fast matters, but not if it creates permanent complexity.</p>
+            </article>
+            <article class="feature-card ow-card ow-card--blue">
+              <h3 class="feature-card__title ow-card__title">I design with real users in mind</h3>
+              <p class="feature-card__body ow-card__body">Technical decisions only matter if they improve real workflows and outcomes.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -149,4 +235,3 @@
     </footer>
   </body>
 </html>
-
