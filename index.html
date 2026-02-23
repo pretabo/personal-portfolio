@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ben Fellows - Product Manager</title>
     <meta name="description" content="Ben Fellows - Product Manager. Platform, delivery, and strategy." />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="shell site-header-inner">
         <div class="site-header-row">
           <div class="site-brand">
             <span class="site-name">Ben Fellows</span>
             <span class="site-role">Product Manager</span>
           </div>
+          <button type="button" class="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="header-drawer" id="header-burger">
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+          </button>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="index.html" class="nav-current">Home</a>
             <button type="button" class="nav-work-trigger" aria-expanded="false" aria-controls="work-subnav" id="work-trigger">Work</button>
@@ -27,6 +33,19 @@
           <a href="bbc.html">BBC</a>
           <a href="other-work.html">Other Work</a>
         </div>
+        <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
+          <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
+            <a href="index.html" class="nav-current">Home</a>
+            <button type="button" class="nav-work-drawer-trigger" aria-expanded="false" aria-controls="work-drawer-sub" id="work-drawer-trigger">Work</button>
+            <div class="nav-work-sub nav-work-sub--drawer" id="work-drawer-sub" role="region" aria-label="Work links">
+              <a href="economist.html">The Economist</a>
+              <a href="bbc-monitoring.html">BBC Monitoring</a>
+              <a href="bbc.html">BBC</a>
+              <a href="other-work.html">Other Work</a>
+            </div>
+            <a href="about-me.html">About Me</a>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -36,13 +55,13 @@
           <div class="hero-copy">
             <h1 class="hero-name">Ben Fellows</h1>
             <div class="hero-text-bg">
-              <p class="hero-subtitle">Product Manager</p>
+            <p class="hero-subtitle">Product Manager</p>
             </div>
             <div class="hero-text-bg">
-              <p class="hero-body">
+            <p class="hero-body">
               I’m a Product Manager experienced in delivering thoughtful, reliable, and successful products for
               high-visibility and multi-national companies.
-              </p>
+            </p>
             </div>
             <div class="hero-links">
               <a href="https://www.linkedin.com/in/ben-f-a6343ab0/" class="hero-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -82,7 +101,7 @@
             </div>
             <div class="profile-intro-media">
               <img src="assets/Candidshot.jpeg" alt="Ben Fellows" class="profile-intro-image" />
-            </div>
+        </div>
           </div>
 
           <h2 class="profile-pillars-heading">The Pillars Of My Career</h2>
@@ -182,7 +201,7 @@
                 <h3 class="selected-work-card__title">Short-Form Video Recs</h3>
                 <p class="selected-work-card__org">BBC</p>
                 <p class="selected-work-card__context">Integrated short-form video with the BBC recommendations engine and ran A/B tests to optimise placement and engagement.</p>
-              </article>
+            </article>
               <article class="selected-work-card">
                 <div class="selected-work-card__img-wrap">
                   <img src="assets/screenshots/insider.png" alt="" class="selected-work-card__img" />
@@ -190,7 +209,7 @@
                 <h3 class="selected-work-card__title">Insider Infrastructure</h3>
                 <p class="selected-work-card__org">The Economist</p>
                 <p class="selected-work-card__context">Built the infrastructure and homepage components enabling delivery of Insider, The Economist's premium subscriber content.</p>
-              </article>
+            </article>
               <article class="selected-work-card">
                 <div class="selected-work-card__img-wrap">
                   <img src="assets/screenshots/bbcm.png" alt="" class="selected-work-card__img" />
@@ -198,7 +217,7 @@
                 <h3 class="selected-work-card__title">BBC Monitoring Website</h3>
                 <p class="selected-work-card__org">BBC Monitoring</p>
                 <p class="selected-work-card__context">Rebuilt article delivery and CMS workflows for a service used by governments and international institutions worldwide, enabling secure publishing from journalists working in sensitive regions and low-connectivity environments.</p>
-              </article>
+            </article>
               <article class="selected-work-card">
                 <div class="selected-work-card__img-wrap">
                   <img src="assets/screenshots/featured%20podcast.jpeg" alt="" class="selected-work-card__img" />
@@ -206,7 +225,7 @@
                 <h3 class="selected-work-card__title">Podcast Publishing</h3>
                 <p class="selected-work-card__org">The Economist</p>
                 <p class="selected-work-card__context">Enabled podcast publishing and featuring directly from the CMS, giving editorial teams full control over placement, imagery and metadata while removing the need for code changes.</p>
-              </article>
+            </article>
             </div>
           </div>
         </div>
@@ -253,7 +272,7 @@
               <div class="accordion-panel" id="how-build-panel" role="region" aria-labelledby="how-build-btn">
                 <p>I work closely with engineers to deliver incrementally, balancing new capabilities with the realities of supporting complex systems. This approach creates space for teams to ship meaningful improvements while maintaining reliability and technical health.</p>
                 <p>I supported delivery of features such as text-to-speech and enhanced podcast controls while ensuring stability for daily newsroom operations.</p>
-              </div>
+            </div>
             </section>
             <section class="accordion-item">
               <button class="accordion-header" type="button" aria-expanded="false" aria-controls="how-improve-panel" id="how-improve-btn">
@@ -262,7 +281,7 @@
               <div class="accordion-panel" id="how-improve-panel" role="region" aria-labelledby="how-improve-btn">
                 <p>I treat delivery as the start of improvement, using feedback and operational insight to simplify workflows and remove friction. Attention to detail and a methodical approach help ensure each iteration makes the product easier to use and more effective.</p>
                 <p>Refining content tools based on newsroom feedback helped streamline editorial workflows and reduce manual work.</p>
-              </div>
+          </div>
             </section>
             <section class="accordion-item">
               <button class="accordion-header" type="button" aria-expanded="false" aria-controls="how-learn-panel" id="how-learn-btn">
@@ -270,9 +289,9 @@
               </button>
               <div class="accordion-panel" id="how-learn-panel" role="region" aria-labelledby="how-learn-btn">
                 <p>I use real usage, feedback, and team insight to guide what comes next. By sharing learnings and recognising team successes, I help build a culture that improves continuously and strengthens both the product and the people building it.</p>
-                <p>Post-launch reviews and usage insights informed future priorities and helped teams improve both the platform and the way we worked together.</p>
-              </div>
-            </section>
+                <p>Post-launch reviews and usage insights inform future priorities and help teams improve both the product and the way we work together.</p>
+        </div>
+      </section>
           </div>
         </div>
       </section>
@@ -309,6 +328,44 @@
 
         if (nameEl) nameEl.addEventListener('click', goHome);
         if (roleEl) roleEl.addEventListener('click', goHome);
+
+        var burger = document.getElementById('header-burger');
+        var header = document.getElementById('site-header');
+        var drawer = document.getElementById('header-drawer');
+        if (burger && header && drawer) {
+          burger.addEventListener('click', function () {
+            var open = header.classList.toggle('is-menu-open');
+            burger.setAttribute('aria-expanded', open);
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            drawer.hidden = !open;
+          });
+        }
+        var workDrawerTrigger = document.getElementById('work-drawer-trigger');
+        var workDrawerSub = document.getElementById('work-drawer-sub');
+        if (workDrawerTrigger && workDrawerSub) {
+          workDrawerTrigger.addEventListener('click', function () {
+            var open = workDrawerSub.classList.toggle('is-open');
+            workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        function closeMenuIfOpen() {
+          if (header && header.classList.contains('is-menu-open')) {
+            header.classList.remove('is-menu-open');
+            if (burger) {
+              burger.setAttribute('aria-expanded', 'false');
+              burger.setAttribute('aria-label', 'Open menu');
+            }
+            if (drawer) drawer.hidden = true;
+          }
+        }
+        if (drawer) {
+          drawer.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenuIfOpen);
+          });
+        }
+        window.addEventListener('resize', function () {
+          if (window.matchMedia('(min-width: 721px)').matches) closeMenuIfOpen();
+        });
       })();
       (function () {
         document.querySelectorAll("[data-accordion] .accordion-header").forEach(function (button) {

@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Me - Ben Fellows</title>
     <meta name="description" content="A bit about Ben Fellows - product manager, background and life." />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page page--about">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="shell site-header-inner">
         <div class="site-header-row">
           <div class="site-brand">
             <span class="site-name">Ben Fellows</span>
             <span class="site-role">Product Manager</span>
           </div>
+          <button type="button" class="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="header-drawer" id="header-burger">
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+          </button>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="index.html">Home</a>
             <button type="button" class="nav-work-trigger" aria-expanded="false" aria-controls="work-subnav" id="work-trigger">Work</button>
@@ -26,6 +32,19 @@
           <a href="bbc-monitoring.html">BBC Monitoring</a>
           <a href="bbc.html">BBC</a>
           <a href="other-work.html">Other Work</a>
+        </div>
+        <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
+          <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-drawer-trigger" aria-expanded="false" aria-controls="work-drawer-sub" id="work-drawer-trigger">Work</button>
+            <div class="nav-work-sub nav-work-sub--drawer" id="work-drawer-sub" role="region" aria-label="Work links">
+              <a href="economist.html">The Economist</a>
+              <a href="bbc-monitoring.html">BBC Monitoring</a>
+              <a href="bbc.html">BBC</a>
+              <a href="other-work.html">Other Work</a>
+            </div>
+            <a href="about-me.html" class="nav-current">About Me</a>
+          </nav>
         </div>
       </div>
     </header>
@@ -51,6 +70,44 @@
         }
         if (nameEl) nameEl.addEventListener('click', goHome);
         if (roleEl) roleEl.addEventListener('click', goHome);
+
+        var burger = document.getElementById('header-burger');
+        var header = document.getElementById('site-header');
+        var drawer = document.getElementById('header-drawer');
+        if (burger && header && drawer) {
+          burger.addEventListener('click', function () {
+            var open = header.classList.toggle('is-menu-open');
+            burger.setAttribute('aria-expanded', open);
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            drawer.hidden = !open;
+          });
+        }
+        var workDrawerTrigger = document.getElementById('work-drawer-trigger');
+        var workDrawerSub = document.getElementById('work-drawer-sub');
+        if (workDrawerTrigger && workDrawerSub) {
+          workDrawerTrigger.addEventListener('click', function () {
+            var open = workDrawerSub.classList.toggle('is-open');
+            workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        function closeMenuIfOpen() {
+          if (header && header.classList.contains('is-menu-open')) {
+            header.classList.remove('is-menu-open');
+            if (burger) {
+              burger.setAttribute('aria-expanded', 'false');
+              burger.setAttribute('aria-label', 'Open menu');
+            }
+            if (drawer) drawer.hidden = true;
+          }
+        }
+        if (drawer) {
+          drawer.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenuIfOpen);
+          });
+        }
+        window.addEventListener('resize', function () {
+          if (window.matchMedia('(min-width: 721px)').matches) closeMenuIfOpen();
+        });
       })();
     </script>
 
@@ -60,10 +117,10 @@
           <h1 class="about-me-heading">About me</h1>
           <div class="about-me-content">
             <div class="about-me-copy">
-              <p>Hi, I'm Ben. I live in London and work in product. This site is a bit about what I've done and how I think about the work.</p>
+              <p>Hi, I'm Ben. I live in London and work in product. This site is a bit about what I've done and how I think about my work.</p>
               <p>My degree was in psychology, and after graduating I fell into a job in my hometown, starting in billing operations and later helping teams improve their processes. It was an early introduction to how organisations actually function and how small operational fixes can make a real difference.</p>
-              <p>Between 2015 and 2017 I lived abroad, promoting entrepreneurship in Tanzania and teaching maths and science in Vietnam. Returning to the UK meant a career reset and a Master's in Computer Science, where I graduated with a distinction and planned to become a software developer.</p>
-              <p>After early engineering roles, including work on the English league transfer system and building internal tools at a digital marketing company in London, I joined the BBC on the Software Engineering Graduate Scheme. Over time I realised I preferred shaping problems and planning work to writing code (and I was never especially good at writing code anyway). I moved into business analysis rotations across the World Service, the 2020 US Election team and Short Form Video, before joining BBC Monitoring.</p>
+              <p>Between 2015 and 2017 I lived abroad, promoting entrepreneurship in Tanzania and teaching maths and science in Vietnam. Returning to the UK for a career reset, I took a Master's in Computer Science, where I graduated with a distinction and planned to become a software developer.</p>
+              <p>After early engineering roles, including work on the English league transfer system and building internal tools at a digital marketing company in London, I joined the BBC on the Software Engineering Graduate Scheme. Over time I realised I preferred shaping problems and planning work to writing code. I moved into business analysis rotations across the World Service, the 2020 US Election team and Short Form Video, before joining BBC Monitoring.</p>
               <p>In 2022 I moved to The Economist, where product responsibilities grew alongside my BA role. I was promoted to Senior Business Analyst and later became a Product Manager, now leading the CMS and publishing platform that powers Economist content.</p>
             </div>
             <div class="about-me-photo-wrap">

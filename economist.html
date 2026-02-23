@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Economist - Ben Fellows</title>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page page--economist">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="shell site-header-inner">
         <div class="site-header-row">
           <div class="site-brand">
             <span class="site-name">Ben Fellows</span>
             <span class="site-role">Product Manager</span>
           </div>
+          <button type="button" class="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="header-drawer" id="header-burger">
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+          </button>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="index.html">Home</a>
             <button type="button" class="nav-work-trigger nav-work-trigger--active" aria-expanded="true" aria-controls="work-subnav" id="work-trigger">Work</button>
@@ -25,6 +31,19 @@
           <a href="bbc-monitoring.html">BBC Monitoring</a>
           <a href="bbc.html">BBC</a>
           <a href="other-work.html">Other Work</a>
+        </div>
+        <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
+          <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-drawer-trigger" aria-expanded="false" aria-controls="work-drawer-sub" id="work-drawer-trigger">Work</button>
+            <div class="nav-work-sub nav-work-sub--drawer" id="work-drawer-sub" role="region" aria-label="Work links">
+              <a href="economist.html" class="nav-current">The Economist</a>
+              <a href="bbc-monitoring.html">BBC Monitoring</a>
+              <a href="bbc.html">BBC</a>
+              <a href="other-work.html">Other Work</a>
+            </div>
+            <a href="about-me.html">About Me</a>
+          </nav>
         </div>
       </div>
     </header>
@@ -56,6 +75,44 @@
 
         if (nameEl) nameEl.addEventListener('click', goHome);
         if (roleEl) roleEl.addEventListener('click', goHome);
+
+        var burger = document.getElementById('header-burger');
+        var header = document.getElementById('site-header');
+        var drawer = document.getElementById('header-drawer');
+        if (burger && header && drawer) {
+          burger.addEventListener('click', function () {
+            var open = header.classList.toggle('is-menu-open');
+            burger.setAttribute('aria-expanded', open);
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            drawer.hidden = !open;
+          });
+        }
+        var workDrawerTrigger = document.getElementById('work-drawer-trigger');
+        var workDrawerSub = document.getElementById('work-drawer-sub');
+        if (workDrawerTrigger && workDrawerSub) {
+          workDrawerTrigger.addEventListener('click', function () {
+            var open = workDrawerSub.classList.toggle('is-open');
+            workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        function closeMenuIfOpen() {
+          if (header && header.classList.contains('is-menu-open')) {
+            header.classList.remove('is-menu-open');
+            if (burger) {
+              burger.setAttribute('aria-expanded', 'false');
+              burger.setAttribute('aria-label', 'Open menu');
+            }
+            if (drawer) drawer.hidden = true;
+          }
+        }
+        if (drawer) {
+          drawer.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenuIfOpen);
+          });
+        }
+        window.addEventListener('resize', function () {
+          if (window.matchMedia('(min-width: 721px)').matches) closeMenuIfOpen();
+        });
       })();
     </script>
     <main>
@@ -314,6 +371,56 @@
                 </p>
               </div>
             </section>
+          </div>
+
+          <div class="selected-work">
+            <h2 class="selected-work__heading">Key Successes</h2>
+            <div class="selected-work__scroll-wrap">
+            <div class="selected-work__scroll" role="region" aria-label="Selected Economist work carousel">
+              <div class="selected-work__track">
+                <article class="selected-work-card">
+                  <div class="selected-work-card__img-wrap">
+                    <img src="assets/screenshots/economist-homepage2.png" alt="" class="selected-work-card__img" />
+                  </div>
+                  <h3 class="selected-work-card__title">Homepage Evolution</h3>
+                  <p class="selected-work-card__org">The Economist</p>
+                  <p class="selected-work-card__context">Owned the evolution of The Economist's homepage, delivering new components and variants for one of the publication's most visible and commercially critical surfaces.</p>
+                </article>
+                <article class="selected-work-card">
+                  <div class="selected-work-card__img-wrap">
+                    <img src="assets/screenshots/data-migration.jpg" alt="" class="selected-work-card__img" />
+                  </div>
+                  <h3 class="selected-work-card__title">Platform Migration</h3>
+                  <p class="selected-work-card__org">The Economist</p>
+                  <p class="selected-work-card__context">Led the migration of core publishing workflows into CUE and CPv2, modernising the platform that powers The Economist's global digital publishing.</p>
+                </article>
+                <article class="selected-work-card">
+                  <div class="selected-work-card__img-wrap">
+                    <img src="assets/screenshots/TTS2.png" alt="" class="selected-work-card__img" />
+                  </div>
+                  <h3 class="selected-work-card__title">AI Article Audio</h3>
+                  <p class="selected-work-card__org">The Economist</p>
+                  <p class="selected-work-card__context">Delivered AI-generated audio for newly published articles, enabling near-immediate listening across the site and expanding reach to audio-first and younger audiences.</p>
+                </article>
+                <article class="selected-work-card">
+                  <div class="selected-work-card__img-wrap">
+                    <img src="assets/screenshots/insider.png" alt="" class="selected-work-card__img" />
+                  </div>
+                  <h3 class="selected-work-card__title">Insider Infrastructure</h3>
+                  <p class="selected-work-card__org">The Economist</p>
+                  <p class="selected-work-card__context">Built the infrastructure and homepage components enabling delivery of Insider, The Economist's premium subscriber content.</p>
+                </article>
+                <article class="selected-work-card">
+                  <div class="selected-work-card__img-wrap">
+                    <img src="assets/screenshots/featured%20podcast.jpeg" alt="" class="selected-work-card__img" />
+                  </div>
+                  <h3 class="selected-work-card__title">Podcast Publishing</h3>
+                  <p class="selected-work-card__org">The Economist</p>
+                  <p class="selected-work-card__context">Enabled podcast publishing and featuring directly from the CMS, giving editorial teams full control over placement, imagery and metadata while removing the need for code changes.</p>
+                </article>
+              </div>
+            </div>
+            </div>
           </div>
         </div>
       </section>

@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Other Work - Ben Fellows</title>
     <meta name="description" content="Engineering roots, international experience and technical grounding that shape product work." />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="page page--other">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="shell site-header-inner">
         <div class="site-header-row">
           <div class="site-brand">
             <span class="site-name">Ben Fellows</span>
             <span class="site-role">Product Manager</span>
           </div>
+          <button type="button" class="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="header-drawer" id="header-burger">
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+          </button>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="index.html">Home</a>
             <button type="button" class="nav-work-trigger nav-work-trigger--active" aria-expanded="true" aria-controls="work-subnav" id="work-trigger">Work</button>
@@ -26,6 +32,19 @@
           <a href="bbc-monitoring.html">BBC Monitoring</a>
           <a href="bbc.html">BBC</a>
           <a href="other-work.html" class="nav-current">Other Work</a>
+        </div>
+        <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
+          <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-drawer-trigger" aria-expanded="false" aria-controls="work-drawer-sub" id="work-drawer-trigger">Work</button>
+            <div class="nav-work-sub nav-work-sub--drawer" id="work-drawer-sub" role="region" aria-label="Work links">
+              <a href="economist.html">The Economist</a>
+              <a href="bbc-monitoring.html">BBC Monitoring</a>
+              <a href="bbc.html">BBC</a>
+              <a href="other-work.html" class="nav-current">Other Work</a>
+            </div>
+            <a href="about-me.html">About Me</a>
+          </nav>
         </div>
       </div>
     </header>
@@ -51,6 +70,44 @@
         }
         if (nameEl) nameEl.addEventListener('click', goHome);
         if (roleEl) roleEl.addEventListener('click', goHome);
+
+        var burger = document.getElementById('header-burger');
+        var header = document.getElementById('site-header');
+        var drawer = document.getElementById('header-drawer');
+        if (burger && header && drawer) {
+          burger.addEventListener('click', function () {
+            var open = header.classList.toggle('is-menu-open');
+            burger.setAttribute('aria-expanded', open);
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            drawer.hidden = !open;
+          });
+        }
+        var workDrawerTrigger = document.getElementById('work-drawer-trigger');
+        var workDrawerSub = document.getElementById('work-drawer-sub');
+        if (workDrawerTrigger && workDrawerSub) {
+          workDrawerTrigger.addEventListener('click', function () {
+            var open = workDrawerSub.classList.toggle('is-open');
+            workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        function closeMenuIfOpen() {
+          if (header && header.classList.contains('is-menu-open')) {
+            header.classList.remove('is-menu-open');
+            if (burger) {
+              burger.setAttribute('aria-expanded', 'false');
+              burger.setAttribute('aria-label', 'Open menu');
+            }
+            if (drawer) drawer.hidden = true;
+          }
+        }
+        if (drawer) {
+          drawer.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenuIfOpen);
+          });
+        }
+        window.addEventListener('resize', function () {
+          if (window.matchMedia('(min-width: 721px)').matches) closeMenuIfOpen();
+        });
       })();
     </script>
 
@@ -70,14 +127,12 @@
       <div class="section-divider ow-divider">
         <div class="shell">
           <h2 class="section-divider__label ow-divider__label">Engineering Roots</h2>
-          <hr class="section-divider__rule ow-divider__rule" />
         </div>
       </div>
 
       <!-- 3. SoftCard grid: Engineering Foundations -->
-      <section class="ow-section ow-section--eng" aria-labelledby="ow-eng-heading">
+      <section class="ow-section ow-section--eng">
         <div class="shell">
-          <h2 id="ow-eng-heading" class="ow-section__title ow-section__title--caps">Engineering foundations</h2>
           <div class="ow-cards ow-cards--three">
             <article class="soft-card ow-card ow-card--blue ow-eng-card">
               <h3 class="soft-card__title ow-card__title">MSc Computer Science</h3>
@@ -119,14 +174,12 @@
       <div class="section-divider ow-divider">
         <div class="shell">
           <h2 class="section-divider__label ow-divider__label">Global Experience</h2>
-          <hr class="section-divider__rule ow-divider__rule" />
         </div>
       </div>
 
       <!-- 4. International work: two-col with image, date, body -->
-      <section class="ow-section ow-section--tinted" aria-labelledby="ow-intl-heading">
+      <section class="ow-section ow-section--tinted">
         <div class="shell">
-          <h2 id="ow-intl-heading" class="ow-section__title ow-section__title--caps">International work</h2>
           <div class="ow-intl-grid">
             <article class="ow-intl-entry">
               <div class="ow-intl-entry__img-wrap">
@@ -149,14 +202,12 @@
       <div class="section-divider ow-divider">
         <div class="shell">
           <h2 class="section-divider__label ow-divider__label">Technical Foundation</h2>
-          <hr class="section-divider__rule ow-divider__rule" />
         </div>
       </div>
 
       <!-- 5. MSc feature block: showcase panel -->
-      <section class="ow-section ow-section--msc" aria-labelledby="ow-edu-heading">
+      <section class="ow-section ow-section--msc">
         <div class="shell">
-          <h2 id="ow-edu-heading" class="ow-section__title ow-section__title--caps">Education &amp; technical grounding</h2>
           <div class="ow-msc-block">
             <header class="ow-msc-block__header">
               <h3 class="ow-msc-block__title">MSc Computer Science - Distinction</h3>
@@ -190,14 +241,12 @@
       <div class="section-divider ow-divider">
         <div class="shell">
           <h2 class="section-divider__label ow-divider__label">How this shapes my product work</h2>
-          <hr class="section-divider__rule ow-divider__rule" />
         </div>
       </div>
 
       <!-- 6. FeatureCard grid: Principles (6 cards) -->
-      <section class="ow-section" aria-labelledby="ow-principles-heading">
+      <section class="ow-section">
         <div class="shell">
-          <h2 id="ow-principles-heading" class="ow-section__title ow-section__title--caps">Principles</h2>
           <div class="ow-cards ow-cards--three ow-cards--principles">
             <article class="feature-card ow-card ow-card--blue">
               <h3 class="feature-card__title ow-card__title">I go to the source</h3>
