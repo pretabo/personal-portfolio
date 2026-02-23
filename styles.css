@@ -250,9 +250,18 @@ input:focus-visible {
   gap: 2px;
 }
 
+.site-brand a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .site-brand .site-name,
 .site-brand .site-role {
   cursor: pointer !important;
+}
+
+.site-brand .site-role {
+  color: var(--color-brand-pink);
 }
 
 .site-name {
@@ -557,7 +566,7 @@ main {
 }
 
 .hero-copy {
-  max-width: 26rem;
+  max-width: 44rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -610,7 +619,7 @@ main {
   font-size: 1.45rem;
   line-height: 1.55;
   color: var(--color-text-primary);
-  max-width: 32ch;
+  max-width: 62ch;
 }
 
 .hero-links {
@@ -624,6 +633,28 @@ main {
   border-radius: 999px;
   padding: 0.6rem 0.85rem;
   box-shadow: 0 4px 16px color-mix(in srgb, var(--color-brand-green) 30%, transparent);
+}
+
+/* Hero links fixed to bottom of viewport (homepage only) */
+.hero-links-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 12px 24px 20px;
+  pointer-events: none;
+}
+.hero-links-fixed .hero-links {
+  pointer-events: auto;
+  margin-top: 0;
+  opacity: 0.7;
+}
+
+.page--home .site-footer {
+  padding-bottom: 5rem;
 }
 
 .hero-link {
@@ -657,7 +688,7 @@ main {
 
 @media (max-width: 720px) {
   .hero-feedback {
-    margin-top: 16rem;
+    margin-top: 2rem;
   }
 }
 
@@ -773,7 +804,7 @@ main {
     --hero-spacing-subtitle: 0.5rem;
     --hero-spacing-body: 2.5rem;
     --hero-spacing-image: 1.5rem;
-    padding: calc(88px - 1cm) 0 56px;
+    padding: calc(88px - 1cm) 0 1rem;
     scroll-margin-top: calc(88px - 1cm);
   }
 
@@ -791,7 +822,7 @@ main {
 
   .hero-copy {
     position: absolute;
-    top: 9cm;
+    top: 6.3cm;
     left: 0;
     right: 0;
     width: 100%;
@@ -1367,7 +1398,8 @@ main {
 
 @media (max-width: 720px) {
   .section.section-profile {
-    padding-top: 0px;
+    padding-top: 0;
+    margin-top: -0.5rem;
   }
 }
 
@@ -2044,7 +2076,7 @@ main {
 
 .page--bbcm .bbcm-hero__lede {
   margin: 0 0 1.25rem;
-  max-width: 48ch;
+  max-width: 52ch;
   font-size: clamp(1.05rem, 1.65vw, 1.2rem);
   line-height: 1.6;
   color: color-mix(in srgb, var(--color-surface) 95%, transparent);
