@@ -165,7 +165,7 @@
           <p>And ChatGPT is ChatGPT: <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">https://chatgpt.com/</a></p>
           <p>I've messed around with Cursor before on a few personal projects in the past, with mixed results. What I've found is that it's very good at the start of a project. Spinning up prototypes, scaffolding, bare bones systems.</p>
           <p>The big challenge is:</p>
-          <div class="blog-s1 blog-s1--pink">You have to be totally, totally prescriptive about what you want.</div>
+          <div class="blog-s1 blog-s1--green">You have to be totally, totally prescriptive about what you want.</div>
           <p>You can't just say "make me a page about my experience at The Economist" and expect something interesting. You can write a whole complex prompt about wanting something professional, stylish, unique, bold, eye-catching, following best practices and modern design principles… and it will still give you something incredibly basic.</p>
           <p>It loves paragraphs. It loves long wordy text in subheads. It loves text boxes. It falls into the same handful of layouts over and over again.</p>
           <p>Design principles are basically non-existent. You get overlapping text. Text boxes stretching the full height of the screen. Images inserted either massive or tiny. Padding across the site was dreadful.</p>
@@ -174,12 +174,25 @@
           <p>One thing I learned quickly: don't rely on it for text.</p>
           <div class="blog-s1 blog-s1--pink">Cursor is strong at writing code and weak at writing copy.</div>
           <p>I ended up using ChatGPT in a separate window to shape and refine the text, then pasting that into Cursor.</p>
-          <p>The most effective workflow I found, and probably the cleverest thing I did in this whole process, was running ChatGPT and Cursor side by side.</p>
+          <p>The most effective workflow I found was running ChatGPT and Cursor side by side.</p>
           <p>I'd talk through a feature with ChatGPT, share screenshots, HTML and CSS, ask it to look at other PM portfolios and design principles, and then ask it to generate a precise prompt.</p>
           <p>Then I'd feed that prompt into Cursor and let it execute.</p>
           <p>That loop worked far better than prompting Cursor cold.</p>
-          <p>My process became: get a cursor to build a basic page, get the content onto the page using placeholder AI text (2026's lorem ipsum), then build up structure around it. Create components. Insert the real content into those components. You have to bring the ideas. You cannot let the AI invent them.</p>
-          <p>For example, I wanted a carousel showing product highlights. I had to tell it exactly what that carousel is, how it behaves, and what it contains. Even then, it misses basic UX signals. Mine pushed the first item flush to the edge of the screen so the user couldn't tell more items existed, even though I explicitly asked for that affordance.</p>
+          <figure class="blog-workflow-diagram" aria-label="Workflow: ChatGPT and Cursor side by side">
+            <div class="blog-workflow-diagram__row">
+              <div class="blog-workflow-diagram__box blog-workflow-diagram__box--chatgpt">
+                <span class="blog-workflow-diagram__label">ChatGPT</span>
+                <span class="blog-workflow-diagram__step">Discuss feature, share screenshots &amp; code, get precise prompt</span>
+              </div>
+              <span class="blog-workflow-diagram__arrow" aria-hidden="true">→</span>
+              <div class="blog-workflow-diagram__box blog-workflow-diagram__box--cursor">
+                <span class="blog-workflow-diagram__label">Cursor</span>
+                <span class="blog-workflow-diagram__step">Execute prompt, generate code</span>
+              </div>
+            </div>
+            <div class="blog-workflow-diagram__loop">↻ repeat</div>
+          </figure>
+          <p>My process became: get a cursor to build a basic page, get the content onto the page using placeholder AI text (2026's lorem ipsum), then build up structure around it. </p>
 
           <h3>Where does it fall down?</h3>
           <p>As time goes on and Cursor does more and more work on the codebase, results can be unpredictable. You might ask it to add something innocuous to the header and it will fundamentally change the header behaviour.</p>
@@ -196,21 +209,21 @@
 
           <h3>Engineering Mistakes</h3>
           <p>Another thing that becomes obvious very quickly is how messy the codebase gets.</p>
-          <div class="blog-s1 blog-s1--green">AI solves problems locally, not globally.</div>
+          <div class="blog-s1 blog-s1--pink">AI solves problems locally, not globally.</div>
           <p>If the same behaviour exists across multiple pages, it won't abstract that into a shared function. Each component ends up with its own version. It works, but you can immediately see it won't scale.</p>
           <p>It also leaves artefacts behind. It might try something, fail, and leave fragments of that attempt in the code unless you're diligent with checking every single line of code. It's possible to work quickly using AI, but the cost is spaghetti code.</p>
           <p>Over time that builds up into bloated CSS, HTML and JavaScript for what is, on the surface, a very simple component.</p>
 
           <h3>Where is it powerful?</h3>
-          <div class="blog-s1 blog-s1--pink">It's excellent at building something from nothing.</div>
+          <div class="blog-s1 blog-s1--green">It's excellent at building something from nothing.</div>
           <p>It blows my mind that I can go from an empty file to having a (mostly) functional system in seconds.</p>
           <p>Where it shines is spinning up sophisticated JS and CSS components quickly.</p>
-          <p>I built a carousel of colleague feedback by dumping in my annual review and LinkedIn recommendations and asking it to structure them. I told it to create a JSON data format, randomise quote order, enforce length limits, add quotation marks, style them in my global pink, and so on. Some iterations were awful, but after a bit of tinkering I ended up with something scalable and genuinely impressive.</p>
+          <p>I built a carousel of colleague feedback by dumping in my annual review and LinkedIn recommendations and asking the AI to structure them. I told it to create a JSON data format, randomise quote order, enforce length limits, add quotation marks, style them in my global pink, and so on. Some iterations were awful, but after a bit of tinkering I ended up with something impressively functional.</p>
 
           <h3>Summary</h3>
           <p>Overall, I was very impressed by how well I was able to create a relatively sophisticated and totally bespoke website without writing a single line of code.</p>
           <p>It takes time, patience, and technical understanding certainly helps. The tools don't remove the need for good judgement, they just change where that judgement gets applied. You still have to think about structure, usability, scalability and quality.</p>
-          <div class="blog-s1 blog-s1--green">The difference is you're guiding rather than building.</div>
+          <div class="blog-s1 blog-s1--pink">The difference is you're guiding rather than building.</div>
         </div>
       </article>
     </main>
