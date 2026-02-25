@@ -438,14 +438,38 @@
         fetch('feedback.json')
           .then(function (r) { return r.json(); })
           .then(function (data) {
-            var items = Array.isArray(data) ? data : (data && Array.isArray(data.feedback) ? data.feedback : []);
+            var people = Array.isArray(data) ? data : [];
+            var items = [];
+            people.forEach(function (p) {
+              if (p && p.name && Array.isArray(p.quotes)) {
+                p.quotes.forEach(function (q) {
+                  items.push({ quote: q, name: p.name, role: p.role || '' });
+                });
+              }
+            });
             if (items.length === 0) return;
-            items = shuffle(items);
+            var byName = {};
+            items.forEach(function (item) {
+              if (!byName[item.name]) byName[item.name] = [];
+              byName[item.name].push(item);
+            });
+            var names = Object.keys(byName);
+            names.forEach(function (k) { byName[k] = shuffle(byName[k]); });
+            names = shuffle(names);
+            items = [];
+            var total = 0;
+            names.forEach(function (k) { total += byName[k].length; });
+            while (items.length < total) {
+              names.forEach(function (k) {
+                if (byName[k].length > 0) items.push(byName[k].pop());
+              });
+            }
             var escape = function (s) { return String(s).replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
             var mark = '<span class="feedback-ticker-mark" aria-hidden="true">\u201C</span>';
             var html = mark;
-            items.forEach(function (text, i) {
-              html += '<span class="feedback-ticker-snippet">' + escape(text) + '</span>';
+            items.forEach(function (item, i) {
+              var attribution = item.name + (item.role ? ', ' + item.role : '');
+              html += '<span class="feedback-ticker-snippet"><span class="feedback-ticker-quote">' + escape(item.quote) + '</span><span class="feedback-ticker-attribution">' + escape(attribution) + '</span></span>';
               if (i < items.length - 1) html += mark;
             });
             wrap.innerHTML = html + html;

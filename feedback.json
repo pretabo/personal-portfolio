@@ -1,21 +1,55 @@
 [
-  "I very much value Ben as a colleague and a product ally.",
-  "I appreciate that he has put me in front of customers and champions pragmatic solutions.",
-  "As an engineer, I'm never left on doubt about what I have to build and why.",
-  "His initiatives are always value-driven.",
-  "He has contributed to a healthy team culture, promoting appreciations and team successes.",
-  "I would happily recommend Ben to anyone.",
-  "I've collaborated with Ben on a number of projects and have always been impressed by his approach as a Product Manager.",
-  "He is thorough, deeply knowledgeable about his product and a great team player.",
-  "He has led a number of high value initiatives with confidence.",
-  "Ben has exceptional attention to detail and is equally comfortable diving into technical complexities as he is explaining them clearly to stakeholders.",
-  "He manages stakeholders effectively, builds strong relationships and is very well liked by his team and peers.",
-  "It's been great working with Ben.",
-  "Ben is great at creating enough space for the team to deliver incrementally.",
-  "He understands the challenges of supporting software and balances priorities between building new features and tackling technical challenges.",
-  "Any team is going to feel the benefits of having Ben as a leader.",
-  "He never failed to impress me with his initiative, outside the box thinking and willing to learn.",
-  "Ben applies a very methodical, patient and enthusiastic approach to his work ",
-  "Everyone would agree that Ben made a huge impact .",
-  "A pleasure to work with."
+  {
+    "name": "Liz",
+    "role": "Chief Product & Technology Leader",
+    "quotes": [
+      "I’ve had the pleasure of working with Ben as he transitioned from Business Analyst into Product Manager on our content management platform, and he’s made that move seamlessly.",
+      "He combines the analytical rigour and problem clarity of an excellent BA with growing product ownership and strong partnership with engineering.",
+      "Detail-oriented, positive, and collaborative, he’s been instrumental in improving complex CMS workflows and aligning teams around the right problems to solve.",
+      "Ben is a trusted team member and a thoughtful PM.",
+      "It is a pleasure to have him on our team, and I’d recommend him highly to any product or platform team."
+    ]
+  },
+  {
+    "name": "Ben",
+    "role": "Senior Software Developer",
+    "quotes": [
+      "I very much value Ben as a colleague and a product ally.",
+      "In particular I appreciate that he has put me in front of customers and champions pragmatic solutions.",
+      "As an engineer, I'm never left on doubt about what I have to build and why.",
+      "His initiatives are always value-driven.",
+      "He has also contributed to a healthy team culture, promoting appreciations and team successes.",
+      "I would happily recommend Ben to anyone."
+    ]
+  },
+  {
+    "name": "Katie",
+    "role": "Product Manager",
+    "quotes": [
+      "I’ve collaborated with Ben on a number of projects and have always been impressed by his approach as a Product Manager.",
+      "He is thorough, deeply knowledgeable about his product and a great team player.",
+      "He has also led a number of high value initiatives with confidence.",
+      "Ben has exceptional attention to detail and is equally comfortable diving into technical complexities as he is explaining them clearly.",
+      "He manages stakeholders effectively, builds strong relationships and is very well liked by his team and peers."
+    ]
+  },
+  {
+    "name": "Guy",
+    "role": "Staff Software Engineer",
+    "quotes": [
+      "Ben is great at driving key work",
+      "He creates enough space for the team to deliver incrementally.",
+      "He understands the challenges of supporting software and balances priorities between building new features and tackling technical challenges.",
+      "Any team is going to feel the benefits of having Ben as a leader."
+    ]
+  },
+  {
+    "name": "Dave",
+    "role": "Intelligent Automation Manager",
+    "quotes": [
+      "He never failed to impress me with his initiative, outside the box thinking and willing to learn.",
+      "Ben applies a very methodical, patient and enthusiastic approach to his work",
+      "A pleasure to work with."
+    ]
+  }
 ]

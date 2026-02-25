@@ -851,6 +851,22 @@ body:has(.hero-links-fixed) .site-footer {
   white-space: normal;
   opacity: 0.9;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-ticker-quote {
+  flex: 0 0 auto;
+}
+
+.feedback-ticker-attribution {
+  display: block;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }
 
 @keyframes feedback-ticker {
@@ -863,6 +879,9 @@ body:has(.hero-links-fixed) .site-footer {
     width: 180px;
     min-height: 4.25em;
     font-size: 0.9rem;
+  }
+  .feedback-ticker-attribution {
+    font-size: 0.75rem;
   }
 
   .feedback-ticker {
@@ -4098,11 +4117,18 @@ body:has(.hero-links-fixed) .site-footer {
 }
 
 @media (max-width: 720px) {
+  .page--blog-vibecoding {
+    overflow-x: hidden;
+  }
   .page--blog-vibecoding .blog-main {
     padding-top: 1.75rem;
     padding-bottom: 2.5rem;
   }
   .page--blog-vibecoding .blog-title {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -4112,9 +4138,22 @@ body:has(.hero-links-fixed) .site-footer {
   }
   .page--blog-vibecoding .blog-s1 {
     font-size: clamp(1.1rem, 5vw, 1.4rem);
-    margin: 1.5rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     padding-left: 24px;
     padding-right: 24px;
+  }
+  .page--blog-vibecoding .blog-workflow-diagram__row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .page--blog-vibecoding .blog-workflow-diagram__arrow {
+    display: block;
+    transform: rotate(90deg);
+  }
+  .page--blog-vibecoding .blog-workflow-diagram__box {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
