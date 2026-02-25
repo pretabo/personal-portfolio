@@ -24,14 +24,19 @@
           <nav class="site-nav" aria-label="Primary navigation">
             <a href="index.html">Home</a>
             <button type="button" class="nav-work-trigger" aria-expanded="false" aria-controls="work-subnav" id="work-trigger">Work</button>
-            <a href="about-me.html" class="nav-current">About Me</a>
+            <button type="button" class="nav-more-trigger nav-more-trigger--active" aria-expanded="true" aria-controls="more-subnav" id="more-trigger">More</button>
           </nav>
         </div>
         <div class="nav-work-sub" id="work-subnav" role="region" aria-label="Work links">
           <a href="economist.html">The Economist</a>
           <a href="bbc-monitoring.html">BBC Monitoring</a>
           <a href="bbc.html">BBC</a>
-          <a href="other-work.html">Other Work</a>
+          <a href="software-engineering.html">Software Engineering</a>
+        </div>
+        <div class="nav-more-sub is-open" id="more-subnav" role="region" aria-label="More links">
+          <a href="about-me.html" class="nav-current">About Me</a>
+          <a href="ai.html">AI</a>
+          <a href="vibecoding.html">Vibecoding this site</a>
         </div>
         <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
           <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
@@ -41,9 +46,14 @@
               <a href="economist.html">The Economist</a>
               <a href="bbc-monitoring.html">BBC Monitoring</a>
               <a href="bbc.html">BBC</a>
-              <a href="other-work.html">Other Work</a>
+              <a href="software-engineering.html">Software Engineering</a>
             </div>
-            <a href="about-me.html" class="nav-current">About Me</a>
+            <button type="button" class="nav-more-drawer-trigger" aria-expanded="false" aria-controls="more-drawer-sub" id="more-drawer-trigger">More</button>
+            <div class="nav-more-sub nav-more-sub--drawer" id="more-drawer-sub" role="region" aria-label="More links">
+              <a href="about-me.html" class="nav-current">About Me</a>
+              <a href="ai.html">AI</a>
+              <a href="vibecoding.html">Vibecoding this site</a>
+            </div>
           </nav>
         </div>
       </div>
@@ -53,11 +63,30 @@
       (function () {
         var trigger = document.getElementById('work-trigger');
         var sub = document.getElementById('work-subnav');
+        var moreTrigger = document.getElementById('more-trigger');
+        var moreSub = document.getElementById('more-subnav');
         if (trigger && sub) {
           trigger.addEventListener('click', function () {
             var open = sub.classList.toggle('is-open');
+            if (open && moreSub) {
+              moreSub.classList.remove('is-open');
+              moreTrigger.setAttribute('aria-expanded', 'false');
+              moreTrigger.classList.remove('nav-more-trigger--active');
+            }
             trigger.setAttribute('aria-expanded', open);
             trigger.classList.toggle('nav-work-trigger--active', open);
+          });
+        }
+        if (moreTrigger && moreSub) {
+          moreTrigger.addEventListener('click', function () {
+            var open = moreSub.classList.toggle('is-open');
+            if (open && sub) {
+              sub.classList.remove('is-open');
+              trigger.setAttribute('aria-expanded', 'false');
+              trigger.classList.remove('nav-work-trigger--active');
+            }
+            moreTrigger.setAttribute('aria-expanded', open);
+            moreTrigger.classList.toggle('nav-more-trigger--active', open);
           });
         }
         var nameEl = document.querySelector('.site-brand .site-name');
@@ -84,10 +113,26 @@
         }
         var workDrawerTrigger = document.getElementById('work-drawer-trigger');
         var workDrawerSub = document.getElementById('work-drawer-sub');
+        var moreDrawerTrigger = document.getElementById('more-drawer-trigger');
+        var moreDrawerSub = document.getElementById('more-drawer-sub');
         if (workDrawerTrigger && workDrawerSub) {
           workDrawerTrigger.addEventListener('click', function () {
             var open = workDrawerSub.classList.toggle('is-open');
+            if (open && moreDrawerSub) {
+              moreDrawerSub.classList.remove('is-open');
+              moreDrawerTrigger.setAttribute('aria-expanded', 'false');
+            }
             workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        if (moreDrawerTrigger && moreDrawerSub) {
+          moreDrawerTrigger.addEventListener('click', function () {
+            var open = moreDrawerSub.classList.toggle('is-open');
+            if (open && workDrawerSub) {
+              workDrawerSub.classList.remove('is-open');
+              workDrawerTrigger.setAttribute('aria-expanded', 'false');
+            }
+            moreDrawerTrigger.setAttribute('aria-expanded', open);
           });
         }
         function closeMenuIfOpen() {
@@ -214,7 +259,18 @@
         </div>
       </section>
     </main>
-
+    <div class="hero-links-fixed" aria-label="Contact links">
+      <div class="hero-links-fixed__inner">
+        <div class="hero-links">
+          <a href="https://www.linkedin.com/in/ben-f-a6343ab0/" class="hero-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:fellobenj@gmail.com" class="hero-link" aria-label="Email">
+            <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
     <footer class="site-footer">
       <div class="shell footer-inner">
         <p>© Ben Fellows</p>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibecoding this site - Ben Fellows</title>
+    <meta name="description" content="How I built this site using vibecoding: ChatGPT, Cursor, and where the technology falls short." />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page page--vibecoding page--blog-vibecoding">
+    <header class="site-header" id="site-header">
+      <div class="shell site-header-inner">
+        <div class="site-header-row">
+          <div class="site-brand">
+            <a href="index.html" class="site-name">Ben Fellows</a>
+            <a href="index.html" class="site-role">Product Manager</a>
+          </div>
+          <button type="button" class="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="header-drawer" id="header-burger">
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+          </button>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-trigger" aria-expanded="false" aria-controls="work-subnav" id="work-trigger">Work</button>
+            <button type="button" class="nav-more-trigger nav-more-trigger--active" aria-expanded="true" aria-controls="more-subnav" id="more-trigger">More</button>
+          </nav>
+        </div>
+        <div class="nav-work-sub" id="work-subnav" role="region" aria-label="Work links">
+          <a href="economist.html">The Economist</a>
+          <a href="bbc-monitoring.html">BBC Monitoring</a>
+          <a href="bbc.html">BBC</a>
+          <a href="software-engineering.html">Software Engineering</a>
+        </div>
+        <div class="nav-more-sub is-open" id="more-subnav" role="region" aria-label="More links">
+          <a href="about-me.html">About Me</a>
+          <a href="ai.html">AI</a>
+          <a href="vibecoding.html" class="nav-current">Vibecoding this site</a>
+        </div>
+        <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
+          <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-drawer-trigger" aria-expanded="false" aria-controls="work-drawer-sub" id="work-drawer-trigger">Work</button>
+            <div class="nav-work-sub nav-work-sub--drawer" id="work-drawer-sub" role="region" aria-label="Work links">
+              <a href="economist.html">The Economist</a>
+              <a href="bbc-monitoring.html">BBC Monitoring</a>
+              <a href="bbc.html">BBC</a>
+              <a href="software-engineering.html">Software Engineering</a>
+            </div>
+            <button type="button" class="nav-more-drawer-trigger" aria-expanded="false" aria-controls="more-drawer-sub" id="more-drawer-trigger">More</button>
+            <div class="nav-more-sub nav-more-sub--drawer" id="more-drawer-sub" role="region" aria-label="More links">
+              <a href="about-me.html">About Me</a>
+              <a href="ai.html">AI</a>
+              <a href="vibecoding.html" class="nav-current">Vibecoding this site</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      (function () {
+        var trigger = document.getElementById('work-trigger');
+        var sub = document.getElementById('work-subnav');
+        var moreTrigger = document.getElementById('more-trigger');
+        var moreSub = document.getElementById('more-subnav');
+        if (trigger && sub) {
+          trigger.addEventListener('click', function () {
+            var open = sub.classList.toggle('is-open');
+            if (open && moreSub) {
+              moreSub.classList.remove('is-open');
+              moreTrigger.setAttribute('aria-expanded', 'false');
+              moreTrigger.classList.remove('nav-more-trigger--active');
+            }
+            trigger.setAttribute('aria-expanded', open);
+            trigger.classList.toggle('nav-work-trigger--active', open);
+          });
+        }
+        if (moreTrigger && moreSub) {
+          moreTrigger.addEventListener('click', function () {
+            var open = moreSub.classList.toggle('is-open');
+            if (open && sub) {
+              sub.classList.remove('is-open');
+              trigger.setAttribute('aria-expanded', 'false');
+              trigger.classList.remove('nav-work-trigger--active');
+            }
+            moreTrigger.setAttribute('aria-expanded', open);
+            moreTrigger.classList.toggle('nav-more-trigger--active', open);
+          });
+        }
+        var burger = document.getElementById('header-burger');
+        var header = document.getElementById('site-header');
+        var drawer = document.getElementById('header-drawer');
+        if (burger && header && drawer) {
+          burger.addEventListener('click', function () {
+            var open = header.classList.toggle('is-menu-open');
+            burger.setAttribute('aria-expanded', open);
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            drawer.hidden = !open;
+          });
+        }
+        var workDrawerTrigger = document.getElementById('work-drawer-trigger');
+        var workDrawerSub = document.getElementById('work-drawer-sub');
+        var moreDrawerTrigger = document.getElementById('more-drawer-trigger');
+        var moreDrawerSub = document.getElementById('more-drawer-sub');
+        if (workDrawerTrigger && workDrawerSub) {
+          workDrawerTrigger.addEventListener('click', function () {
+            var open = workDrawerSub.classList.toggle('is-open');
+            if (open && moreDrawerSub) {
+              moreDrawerSub.classList.remove('is-open');
+              moreDrawerTrigger.setAttribute('aria-expanded', 'false');
+            }
+            workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        if (moreDrawerTrigger && moreDrawerSub) {
+          moreDrawerTrigger.addEventListener('click', function () {
+            var open = moreDrawerSub.classList.toggle('is-open');
+            if (open && workDrawerSub) {
+              workDrawerSub.classList.remove('is-open');
+              workDrawerTrigger.setAttribute('aria-expanded', 'false');
+            }
+            moreDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        function closeMenuIfOpen() {
+          if (header && header.classList.contains('is-menu-open')) {
+            header.classList.remove('is-menu-open');
+            if (burger) {
+              burger.setAttribute('aria-expanded', 'false');
+              burger.setAttribute('aria-label', 'Open menu');
+            }
+            if (drawer) drawer.hidden = true;
+          }
+        }
+        if (drawer) {
+          drawer.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenuIfOpen);
+          });
+        }
+        window.addEventListener('resize', function () {
+          if (window.matchMedia('(min-width: 721px)').matches) closeMenuIfOpen();
+        });
+      })();
+    </script>
+
+    <main class="blog-main">
+      <article class="blog-article">
+        <div class="blog-banner">
+          <div class="blog-banner__inner">
+            <a href="index.html" class="blog-banner__link">While you're here, check out the rest of my site</a>
+          </div>
+        </div>
+        <div class="shell">
+          <h1 class="blog-title">Vibecoding My Personal Profile</h1>
+          <div class="blog-intro">
+            <p>I created and hosted this entire site using vibecoding. I wanted to see what the possibilities were using AI to write code, and where the technology isn't quite there yet.</p>
+            <p>Before getting into it, it's probably worth saying I'm not coming at this cold. I've got a Masters in Computer Science, worked for years as a Software Engineer, and my roles in Business Analysis and Product have been on very technical platforms. I'm comfortable reading code, and understanding what's happening under the hood.</p>
+          </div>
+
+          <h3>How did I do it?</h3>
+          <p>I used a combination of ChatGPT &amp; Cursor to generate my site.</p>
+          <p>Download the Cursor IDE: <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">https://cursor.com/</a></p>
+          <p>And ChatGPT is ChatGPT: <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">https://chatgpt.com/</a></p>
+          <p>I've messed around with Cursor before on a few personal projects in the past, with mixed results. What I've found is that it's very good at the start of a project. Spinning up prototypes, scaffolding, bare bones systems.</p>
+          <p>The big challenge is:</p>
+          <div class="blog-s1 blog-s1--pink">You have to be totally, totally prescriptive about what you want.</div>
+          <p>You can't just say "make me a page about my experience at The Economist" and expect something interesting. You can write a whole complex prompt about wanting something professional, stylish, unique, bold, eye-catching, following best practices and modern design principles… and it will still give you something incredibly basic.</p>
+          <p>It loves paragraphs. It loves long wordy text in subheads. It loves text boxes. It falls into the same handful of layouts over and over again.</p>
+          <p>Design principles are basically non-existent. You get overlapping text. Text boxes stretching the full height of the screen. Images inserted either massive or tiny. Padding across the site was dreadful.</p>
+
+          <h3>My Process</h3>
+          <p>One thing I learned quickly: don't rely on it for text.</p>
+          <div class="blog-s1 blog-s1--pink">Cursor is strong at writing code and weak at writing copy.</div>
+          <p>I ended up using ChatGPT in a separate window to shape and refine the text, then pasting that into Cursor.</p>
+          <p>The most effective workflow I found, and probably the cleverest thing I did in this whole process, was running ChatGPT and Cursor side by side.</p>
+          <p>I'd talk through a feature with ChatGPT, share screenshots, HTML and CSS, ask it to look at other PM portfolios and design principles, and then ask it to generate a precise prompt.</p>
+          <p>Then I'd feed that prompt into Cursor and let it execute.</p>
+          <p>That loop worked far better than prompting Cursor cold.</p>
+          <p>My process became: get a cursor to build a basic page, get the content onto the page using placeholder AI text (2026's lorem ipsum), then build up structure around it. Create components. Insert the real content into those components. You have to bring the ideas. You cannot let the AI invent them.</p>
+          <p>For example, I wanted a carousel showing product highlights. I had to tell it exactly what that carousel is, how it behaves, and what it contains. Even then, it misses basic UX signals. Mine pushed the first item flush to the edge of the screen so the user couldn't tell more items existed, even though I explicitly asked for that affordance.</p>
+
+          <h3>Where does it fall down?</h3>
+          <p>As time goes on and Cursor does more and more work on the codebase, results can be unpredictable. You might ask it to add something innocuous to the header and it will fundamentally change the header behaviour.</p>
+          <p>So the workflow becomes: undo, try again, refine the prompt, undo again, try again. You inch toward what you want.</p>
+          <p>It will never be totally accurate.</p>
+          <p>And that's the key thread running through all of this:</p>
+          <div class="blog-s1 blog-s1--green">You have to accept you don't have full control.</div>
+          <p>The best mental model I found is that it's like working with a designer and engineer who don't have any front-end experience. You're the Product Manager. You're fundamentally responsible for quality. But the output is only as good as how specifically you can define the requirements.</p>
+
+          <h3>Design Blind Spots</h3>
+          <p>Padding was a recurring problem. Everything felt too spread out. Moving elements around needed constant correction.</p>
+          <p>One thing that helped was introducing global values for tricky components. On my BBC timeline page it struggled to position dates and nodes consistently. In the end I asked it to create a global value controlling their placement so I could adjust them precisely.</p>
+          <p>Mobile design was another weak point. It does not optimise for small screens in any meaningful way. I had to design for desktop first, then effectively redesign for mobile afterwards.</p>
+
+          <h3>Engineering Mistakes</h3>
+          <p>Another thing that becomes obvious very quickly is how messy the codebase gets.</p>
+          <div class="blog-s1 blog-s1--green">AI solves problems locally, not globally.</div>
+          <p>If the same behaviour exists across multiple pages, it won't abstract that into a shared function. Each component ends up with its own version. It works, but you can immediately see it won't scale.</p>
+          <p>It also leaves artefacts behind. It might try something, fail, and leave fragments of that attempt in the code unless you're diligent with checking every single line of code. It's possible to work quickly using AI, but the cost is spaghetti code.</p>
+          <p>Over time that builds up into bloated CSS, HTML and JavaScript for what is, on the surface, a very simple component.</p>
+
+          <h3>Where is it powerful?</h3>
+          <div class="blog-s1 blog-s1--pink">It's excellent at building something from nothing.</div>
+          <p>It blows my mind that I can go from an empty file to having a (mostly) functional system in seconds.</p>
+          <p>Where it shines is spinning up sophisticated JS and CSS components quickly.</p>
+          <p>I built a carousel of colleague feedback by dumping in my annual review and LinkedIn recommendations and asking it to structure them. I told it to create a JSON data format, randomise quote order, enforce length limits, add quotation marks, style them in my global pink, and so on. Some iterations were awful, but after a bit of tinkering I ended up with something scalable and genuinely impressive.</p>
+
+          <h3>Summary</h3>
+          <p>Overall, I was very impressed by how well I was able to create a relatively sophisticated and totally bespoke website without writing a single line of code.</p>
+          <p>It takes time, patience, and technical understanding certainly helps. The tools don't remove the need for good judgement, they just change where that judgement gets applied. You still have to think about structure, usability, scalability and quality.</p>
+          <div class="blog-s1 blog-s1--green">The difference is you're guiding rather than building.</div>
+        </div>
+      </article>
+    </main>
+    <div class="hero-links-fixed" aria-label="Contact links">
+      <div class="hero-links-fixed__inner">
+        <div class="hero-links">
+          <a href="https://www.linkedin.com/in/ben-f-a6343ab0/" class="hero-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:fellobenj@gmail.com" class="hero-link" aria-label="Email">
+            <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>© Ben Fellows</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI - Ben Fellows</title>
+    <meta name="description" content="Ben Fellows on AI and product." />
+    <link rel="icon" href="assets/logo.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page page--ai">
+    <header class="site-header" id="site-header">
+      <div class="shell site-header-inner">
+        <div class="site-header-row">
+          <div class="site-brand">
+            <a href="index.html" class="site-name">Ben Fellows</a>
+            <a href="index.html" class="site-role">Product Manager</a>
+          </div>
+          <button type="button" class="header-burger" aria-label="Open menu" aria-expanded="false" aria-controls="header-drawer" id="header-burger">
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+            <span class="header-burger__bar"></span>
+          </button>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-trigger" aria-expanded="false" aria-controls="work-subnav" id="work-trigger">Work</button>
+            <button type="button" class="nav-more-trigger nav-more-trigger--active" aria-expanded="true" aria-controls="more-subnav" id="more-trigger">More</button>
+          </nav>
+        </div>
+        <div class="nav-work-sub" id="work-subnav" role="region" aria-label="Work links">
+          <a href="economist.html">The Economist</a>
+          <a href="bbc-monitoring.html">BBC Monitoring</a>
+          <a href="bbc.html">BBC</a>
+          <a href="software-engineering.html">Software Engineering</a>
+        </div>
+        <div class="nav-more-sub is-open" id="more-subnav" role="region" aria-label="More links">
+          <a href="about-me.html">About Me</a>
+          <a href="ai.html" class="nav-current">AI</a>
+          <a href="vibecoding.html">Vibecoding this site</a>
+        </div>
+        <div class="site-header-drawer" id="header-drawer" role="navigation" aria-label="Main menu" hidden>
+          <nav class="site-nav site-nav--drawer" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <button type="button" class="nav-work-drawer-trigger" aria-expanded="false" aria-controls="work-drawer-sub" id="work-drawer-trigger">Work</button>
+            <div class="nav-work-sub nav-work-sub--drawer" id="work-drawer-sub" role="region" aria-label="Work links">
+              <a href="economist.html">The Economist</a>
+              <a href="bbc-monitoring.html">BBC Monitoring</a>
+              <a href="bbc.html">BBC</a>
+              <a href="software-engineering.html">Software Engineering</a>
+            </div>
+            <button type="button" class="nav-more-drawer-trigger" aria-expanded="false" aria-controls="more-drawer-sub" id="more-drawer-trigger">More</button>
+            <div class="nav-more-sub nav-more-sub--drawer" id="more-drawer-sub" role="region" aria-label="More links">
+              <a href="about-me.html">About Me</a>
+              <a href="ai.html" class="nav-current">AI</a>
+              <a href="vibecoding.html">Vibecoding this site</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      (function () {
+        var trigger = document.getElementById('work-trigger');
+        var sub = document.getElementById('work-subnav');
+        var moreTrigger = document.getElementById('more-trigger');
+        var moreSub = document.getElementById('more-subnav');
+        if (trigger && sub) {
+          trigger.addEventListener('click', function () {
+            var open = sub.classList.toggle('is-open');
+            if (open && moreSub) {
+              moreSub.classList.remove('is-open');
+              moreTrigger.setAttribute('aria-expanded', 'false');
+              moreTrigger.classList.remove('nav-more-trigger--active');
+            }
+            trigger.setAttribute('aria-expanded', open);
+            trigger.classList.toggle('nav-work-trigger--active', open);
+          });
+        }
+        if (moreTrigger && moreSub) {
+          moreTrigger.addEventListener('click', function () {
+            var open = moreSub.classList.toggle('is-open');
+            if (open && sub) {
+              sub.classList.remove('is-open');
+              trigger.setAttribute('aria-expanded', 'false');
+              trigger.classList.remove('nav-work-trigger--active');
+            }
+            moreTrigger.setAttribute('aria-expanded', open);
+            moreTrigger.classList.toggle('nav-more-trigger--active', open);
+          });
+        }
+        var burger = document.getElementById('header-burger');
+        var header = document.getElementById('site-header');
+        var drawer = document.getElementById('header-drawer');
+        if (burger && header && drawer) {
+          burger.addEventListener('click', function () {
+            var open = header.classList.toggle('is-menu-open');
+            burger.setAttribute('aria-expanded', open);
+            burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            drawer.hidden = !open;
+          });
+        }
+        var workDrawerTrigger = document.getElementById('work-drawer-trigger');
+        var workDrawerSub = document.getElementById('work-drawer-sub');
+        var moreDrawerTrigger = document.getElementById('more-drawer-trigger');
+        var moreDrawerSub = document.getElementById('more-drawer-sub');
+        if (workDrawerTrigger && workDrawerSub) {
+          workDrawerTrigger.addEventListener('click', function () {
+            var open = workDrawerSub.classList.toggle('is-open');
+            if (open && moreDrawerSub) {
+              moreDrawerSub.classList.remove('is-open');
+              moreDrawerTrigger.setAttribute('aria-expanded', 'false');
+            }
+            workDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        if (moreDrawerTrigger && moreDrawerSub) {
+          moreDrawerTrigger.addEventListener('click', function () {
+            var open = moreDrawerSub.classList.toggle('is-open');
+            if (open && workDrawerSub) {
+              workDrawerSub.classList.remove('is-open');
+              workDrawerTrigger.setAttribute('aria-expanded', 'false');
+            }
+            moreDrawerTrigger.setAttribute('aria-expanded', open);
+          });
+        }
+        function closeMenuIfOpen() {
+          if (header && header.classList.contains('is-menu-open')) {
+            header.classList.remove('is-menu-open');
+            if (burger) {
+              burger.setAttribute('aria-expanded', 'false');
+              burger.setAttribute('aria-label', 'Open menu');
+            }
+            if (drawer) drawer.hidden = true;
+          }
+        }
+        if (drawer) {
+          drawer.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenuIfOpen);
+          });
+        }
+        window.addEventListener('resize', function () {
+          if (window.matchMedia('(min-width: 721px)').matches) closeMenuIfOpen();
+        });
+      })();
+    </script>
+
+    <main>
+      <section class="section">
+        <div class="shell">
+          <h1>AI</h1>
+          <p>Want to learn how AI works? <a href="how-ai-works.html">Read my guide on how AI works</a>.</p>
+          <p>I've been working with AI for over a decade.</p>
+          <p>On this page, I write about applying AI in real products: what works, what doesn't work, and how teams operate when systems are probabilistic rather than deterministic. My background includes Masters level study in Artificial Intelligence and leading AI integrations such as text-to-speech at The Economist.</p>
+          <p>AI is more ubiquitous now, but the fundamentals haven't changed.</p>
+
+          <h2>AI and Product</h2>
+          <p>AI is arriving inside products built on decades of traditional software thinking. In the old world, if something doesn't work, you fix it.</p>
+          <p>Right now we're in a hybrid moment. AI is the 'new flatmate'. The rest of the house still runs on deterministic software, but this new resident behaves differently.</p>
+          <p>All stakeholders, engineers and product managers have spent their entire careers working with systems where behaviour is predictable and defects can be traced to a clear cause. AI works using probabilities, applying a best guess to a problem.</p>
+          <p>Product managers today are the first people in history navigating this shift. We're integrating systems that don't conform to the models teams have relied on for years. Applying those expectations leads to misdiagnosis and the wrong solutions.</p>
+          <p>The work now includes redefining what "working" means, communicating limitations clearly and helping teams make decisions within those constraints.</p>
+
+          <h2>Integrating text-to-speech at The Economist</h2>
+          <figure class="ai-example-img">
+            <img src="assets/screenshots/ttslong.png" alt="Listen to this story: AI narrated audio player interface" width="800" loading="lazy" />
+          </figure>
+          <p>At The Economist, I worked on integrating text-to-speech into our publishing workflow to improve accessibility and offer new ways to consume journalism.</p>
+          <p>We were already recording human audio for all articles in the weekly edition. However, articles were published online before the weekly edition, and some articles were published online-only. We knew that a lot of users consumed our content in audio format, but there was a huge gap in our product - users who wanted to listen to articles couldn't.</p>
+          <p>We monitored output quality, gathered user feedback and deployed targeted fixes where possible. Just as importantly, we built shared understanding across editorial, product and engineering about what the system could reliably do and where its limits were.</p>
+
+          <h2>What we learned</h2>
+          <ol>
+            <li><strong>Fixes are constrained by tooling</strong><br>Some pronunciation issues could be resolved through alias substitutions. Others introduced regressions or couldn't be solved reliably.</li>
+            <li><strong>Literal processing creates edge cases</strong><br>The system reads raw text. It does not infer meaning or context.</li>
+            <li><strong>Proper nouns are hard at scale</strong><br>Names, brands and places vary widely in formatting and frequency, making consistent correction difficult.</li>
+            <li><strong>Changes can degrade other cases</strong><br>A fix that improves one example may worsen another. Changes require broad testing.</li>
+            <li><strong>Quality detection is reactive</strong><br>At scale, issues are often surfaced through listener feedback rather than automated detection.</li>
+          </ol>
+
+          <h2>A practical example: when fixes backfire</h2>
+          <p>We found values like 10m and 50m were read as "ten em" instead of "ten million", which conflicted with our editorial style.</p>
+          <p>A blanket rule to convert number-"m" to "million" seemed straightforward. We warned it could create unintended side effects. It did. The system began reading "I'm" as "I million".</p>
+          <p>We rolled the change back.</p>
+          <p>We're now exploring upstream approaches, such as expanding "5m" to "5 million" in the payload sent to TTS while preserving the original text. In other contexts the same token may mean metres or be part of a contraction.</p>
+
+          <h2>Aligning stakeholders around AI reality</h2>
+          <p>The biggest challenge wasn't technical.</p>
+          <p>AI systems fail differently from traditional software. Some issues can be improved, mitigated or worked around, but not eliminated.</p>
+          <p>Helping stakeholders understand this changes the conversation. Instead of asking why something is broken, teams focus on acceptable quality thresholds, mitigation strategies and user impact.</p>
+          <p>That shift leads to better decisions and more realistic expectations.</p>
+
+          <h2>How I work with AI today</h2>
+          <p>I use AI tools daily and build workflows around them, but I treat them as components with strengths and limits rather than drop-in solutions.</p>
+          <p>The value comes from:</p>
+          <ul>
+            <li>understanding system behaviour</li>
+            <li>designing workflows around constraints</li>
+            <li>evaluating outcomes rather than impressions</li>
+            <li>keeping human judgement where it matters</li>
+          </ul>
+
+          <h2>What interests me now</h2>
+          <p>I'm particularly interested in:</p>
+          <div class="ow-cards ow-cards--three">
+            <article class="soft-card ow-card ow-card--blue">
+              <div class="soft-card__body ow-card__body">
+                <p>Integrating AI appropriately</p>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--mauve">
+              <div class="soft-card__body ow-card__body">
+                <p>Understanding where AI falls short</p>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--sage">
+              <div class="soft-card__body ow-card__body">
+                <p>Communicating AI behaviour to non-technical teams</p>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--sand">
+              <div class="soft-card__body ow-card__body">
+                <p>Scaling AI systems responsibly</p>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--blue">
+              <div class="soft-card__body ow-card__body">
+                <p>Why vibecode shouldn't be used in production</p>
+              </div>
+            </article>
+            <article class="soft-card ow-card ow-card--mauve">
+              <div class="soft-card__body ow-card__body">
+                <p>Subtlety of good AI integration</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="hero-links-fixed" aria-label="Contact links">
+      <div class="hero-links-fixed__inner">
+        <div class="hero-links">
+          <a href="https://www.linkedin.com/in/ben-f-a6343ab0/" class="hero-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:fellobenj@gmail.com" class="hero-link" aria-label="Email">
+            <svg class="hero-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>© Ben Fellows</p>
+      </div>
+    </footer>
+  </body>
+</html>
