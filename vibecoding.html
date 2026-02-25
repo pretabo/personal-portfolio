@@ -168,7 +168,7 @@
             <p>Before getting into it, it's probably worth saying I'm not coming at this cold. I've got a Masters in Computer Science, worked for years as a Software Engineer, and my roles in Business Analysis and Product have been on very technical platforms. I'm comfortable reading code, and understanding what's happening under the hood.</p>
           </div>
 
-          <h3>How did I do it?</h3>
+          <h2>How did I do it?</h2>
           <p>I used a combination of ChatGPT &amp; Cursor to generate my site.</p>
           <p>Download the Cursor IDE: <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">https://cursor.com/</a></p>
           <p>And ChatGPT is ChatGPT: <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">https://chatgpt.com/</a></p>
@@ -179,7 +179,7 @@
           <p>It loves paragraphs. It loves long wordy text in subheads. It loves text boxes. It falls into the same handful of layouts over and over again.</p>
           <p>Design principles are basically non-existent. You get overlapping text. Text boxes stretching the full height of the screen. Images inserted either massive or tiny. Padding across the site was dreadful.</p>
 
-          <h3>My Process</h3>
+          <h2>My Process</h2>
           <p>One thing I learned quickly: don't rely on Cursor to do the work itself - it needs a lot of specific guidance.</p>
           <div class="blog-s1 blog-s1--pink">Cursor is strong at writing code and weak at understanding user needs.</div>
           <p>I ended up using ChatGPT in a separate window to shape and refine the text, then pasting that into Cursor.</p>
@@ -203,33 +203,33 @@
           </figure>
           <p>My process became: get a cursor to build a basic page, get the content onto the page using placeholder AI text (2026's lorem ipsum), then build up structure around it. </p>
 
-          <h3>Where does it fall down?</h3>
+          <h2>Where does it fall down?</h2>
           <p>As time goes on and Cursor does more and more work on the codebase, results can be unpredictable. You might ask it to add something innocuous to the header and it will fundamentally change the header behaviour.</p>
           <p>So the workflow becomes: undo, try again, refine the prompt, undo again, try again. You inch toward what you want.</p>
-          <p>It will never be totally accurate.</p>
+          <p><strong>It will never be totally accurate.</strong></p>
           <p>And that's the key thread running through all of this:</p>
           <div class="blog-s1 blog-s1--green">You have to accept you don't have full control.</div>
           <p>The best mental model I found is that it's like working with a designer and engineer who don't have any front-end experience. You're the Product Manager. You're fundamentally responsible for quality. But the output is only as good as how specifically you can define the requirements.</p>
 
-          <h3>Design Blind Spots</h3>
+          <h2>Design Blind Spots</h2>
           <p>Padding was a recurring problem. Everything felt too spread out. Moving elements around needed constant correction.</p>
           <p>One thing that helped was introducing global values for tricky components. On my BBC timeline page it struggled to position dates and nodes consistently. In the end I asked it to create a global value controlling their placement so I could adjust them precisely.</p>
           <p>Mobile design was another weak point. It does not optimise for small screens in any meaningful way. I had to design for desktop first, then effectively redesign for mobile afterwards.</p>
 
-          <h3>Engineering Mistakes</h3>
+          <h2>Engineering Mistakes</h2>
           <p>Another thing that becomes obvious very quickly is how messy the codebase gets.</p>
           <div class="blog-s1 blog-s1--pink">AI solves problems locally, not globally.</div>
           <p>If the same behaviour exists across multiple pages, it won't abstract that into a shared function. Each component ends up with its own version. It works, but you can immediately see it won't scale.</p>
           <p>It also leaves artefacts behind. It might try something, fail, and leave fragments of that attempt in the code unless you're diligent with checking every single line of code. It's possible to work quickly using AI, but the cost is spaghetti code.</p>
           <p>Over time that builds up into bloated CSS, HTML and JavaScript for what is, on the surface, a very simple component.</p>
 
-          <h3>Where is it powerful?</h3>
+          <h2>Where is it powerful?</h2>
           <div class="blog-s1 blog-s1--green">It's excellent at building something from nothing.</div>
           <p>It blows my mind that I can go from an empty file to having a (mostly) functional system in seconds.</p>
           <p>Where it shines is spinning up sophisticated JS and CSS components quickly.</p>
           <p>I built a carousel of colleague feedback by dumping in my annual review and LinkedIn recommendations and asking the AI to structure them. I told it to create a JSON data format, randomise quote order, enforce length limits, add quotation marks, style them in my global pink, and so on. Some iterations were awful, but after a bit of tinkering I ended up with something impressively functional.</p>
 
-          <h3>Summary</h3>
+          <h2>Summary</h2>
           <p>Overall, I was very impressed by how well I was able to create a relatively sophisticated and totally bespoke website without writing a single line of code.</p>
           <p>It takes time, patience, and technical understanding certainly helps. The tools don't remove the need for good judgement, they just change where that judgement gets applied. You still have to think about structure, usability, scalability and quality.</p>
           <div class="blog-s1 blog-s1--pink">The difference is you're guiding rather than building.</div>

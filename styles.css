@@ -3265,6 +3265,10 @@ body:has(.hero-links-fixed) .site-footer {
   color: var(--color-brand-green);
 }
 
+.page--ai .ai-heading-accent {
+  color: var(--color-brand-pink);
+}
+
 .page--ai .ai-example-img {
   margin: 0 0 1.5rem;
   max-width: 100%;
@@ -3954,7 +3958,7 @@ body:has(.hero-links-fixed) .site-footer {
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--color-brand-pink);
-  text-decoration: none;
+  text-decoration: underline;
   padding: 0.75rem 1rem;
 }
 
@@ -3999,15 +4003,15 @@ body:has(.hero-links-fixed) .site-footer {
   margin-bottom: 1em;
 }
 
-.page--blog-vibecoding .blog-article h3 {
-  font-size: 1.25rem;
+.page--blog-vibecoding .blog-article h2 {
+  font-size: 2rem;
   font-weight: 700;
   color: var(--color-text-secondary);
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
 }
 
-.page--blog-vibecoding .blog-article h3:first-of-type {
+.page--blog-vibecoding .blog-article h2:first-of-type {
   margin-top: 0;
 }
 
@@ -4132,9 +4136,9 @@ body:has(.hero-links-fixed) .site-footer {
     padding-left: 24px;
     padding-right: 24px;
   }
-  .page--blog-vibecoding .blog-article h3 {
+  .page--blog-vibecoding .blog-article h2 {
     margin-top: 2rem;
-    font-size: 1.15rem;
+    font-size: 1.75rem;
   }
   .page--blog-vibecoding .blog-s1 {
     font-size: clamp(1.1rem, 5vw, 1.4rem);
