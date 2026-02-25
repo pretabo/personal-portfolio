@@ -7,6 +7,15 @@
     <meta name="description" content="How I built this site using vibecoding: ChatGPT, Cursor, and where the technology falls short." />
     <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-85JXXQBZQZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-85JXXQBZQZ');
+    </script>
   </head>
   <body class="page page--vibecoding page--blog-vibecoding">
     <header class="site-header" id="site-header">
@@ -172,7 +181,7 @@
 
           <h3>My Process</h3>
           <p>One thing I learned quickly: don't rely on Cursor to do the work itself - it needs a lot of specific guidance.</p>
-          <div class="blog-s1 blog-s1--pink">Cursor is strong at writing code and weak at writing copy.</div>
+          <div class="blog-s1 blog-s1--pink">Cursor is strong at writing code and weak at understanding user needs.</div>
           <p>I ended up using ChatGPT in a separate window to shape and refine the text, then pasting that into Cursor.</p>
           <p>The most effective workflow I found was running ChatGPT and Cursor side by side.</p>
           <p>I'd talk through a feature with ChatGPT, share screenshots, HTML and CSS, ask it to look at other PM portfolios and design principles, and then ask it to generate a precise prompt.</p>
