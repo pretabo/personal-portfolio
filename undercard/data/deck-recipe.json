@@ -1,0 +1,7 @@
+[
+  { "type": "attack", "count": 26 },
+  { "type": "taunt", "count": 12 },
+  { "cardId": "pin", "count": 4 },
+  { "cardId": "dodge", "count": 4 },
+  { "cardId": "reversal", "count": 4 }
+]
